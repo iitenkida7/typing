@@ -12,6 +12,7 @@
   <pre>
 key: {{ key }}
 keyCode: {{ keyCode }}
+missCont: {{ missCnt }}
 </pre>
 </template>
 
@@ -27,6 +28,7 @@ export default {
       key: "",
       keyCode: "",
       completed: false,
+      missCnt: 0,
       TypingData: TypingData,
     };
   },
@@ -43,6 +45,8 @@ export default {
       if (event.key === this.targetChr) {
         this.target = this.target.substr(1);
         this.targetChr = this.target.substr(0, 1);
+      }else{
+          this.missCnt++;
       }
 
       if (this.target.length === 0) {
