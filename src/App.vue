@@ -4,9 +4,12 @@
       {{ target }}
     </div>
     <div>
+      {{ remains }}
+    </div>
+    <div>
       {{ targetChr }}
     </div>
-    <input type="text" @keydown="onKeyDown" />
+    <input type="text" v-model="inputText" @keyup="keyPress" />
   </div>
 
   <h1 v-if="completed">OK＼(^o^)／</h1>
@@ -25,42 +28,45 @@ export default {
   name: "App",
   data: function () {
     return {
-      target: "",
-      targetChr: "",
-      key: "",
-      keyCode: "",
+      target: '',
+      remains: '',
+      targetChr: '',
       completed: false,
       missCnt: 0,
+      key: '',
+      keyCode: '',
       TypingData: TypingData,
     };
   },
   mounted: function () {
     this.$nextTick(function () {
       this.TypingData = TypingData.sort(() => Math.random() - 0.5);
-
       this.target = this.TypingData.shift();
-      this.targetChr = this.target.substr(0, 1);
+      this.remains = this.target;
+      this.targetChr = this.remains.substr(0, 1);
     });
   },
   methods: {
-    onKeyDown(event) {
+    keyPress(event) {
       if (event.key === this.targetChr) {
-        this.target = this.target.substr(1);
-        this.targetChr = this.target.substr(0, 1);
+        this.remains = this.remains.substr(1);
+        this.targetChr = this.remains.substr(0, 1);
       } else {
         this.missCnt++;
       }
 
-      if (this.target.length === 0) {
+      if (this.remains.length === 0) {
         this.target = this.TypingData.shift();
+        this.remains = this.target;
+        this.inputText = '';
         if (this.target) {
-          this.targetChr = this.target.substr(0, 1);
+          this.targetChr = this.remains.substr(0, 1);
         } else {
           this.completed = true;
         }
       }
 
-      console.log(this.target);
+      //console.log(this.target);
       this.key = event.key;
       this.keyCode = event.keyCode;
     },
