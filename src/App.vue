@@ -1,19 +1,21 @@
 <template>
-  <div>
-    {{ target }}
+  <div :v-if="completed === false">
+    <div>
+      {{ target }}
+    </div>
+    <div>
+      {{ targetChr }}
+    </div>
+    <input type="text" @keydown="onKeyDown" />
   </div>
-  <div>
-    {{ targetChr }}
-  </div>
-
-  <input type="text" @keydown="onKeyDown" />
 
   <h1 v-if="completed">OK＼(^o^)／</h1>
   <pre>
 key: {{ key }}
 keyCode: {{ keyCode }}
 missCont: {{ missCnt }}
-</pre>
+</pre
+  >
 </template>
 
 <script>
@@ -45,8 +47,8 @@ export default {
       if (event.key === this.targetChr) {
         this.target = this.target.substr(1);
         this.targetChr = this.target.substr(0, 1);
-      }else{
-          this.missCnt++;
+      } else {
+        this.missCnt++;
       }
 
       if (this.target.length === 0) {
