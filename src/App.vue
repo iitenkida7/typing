@@ -1,7 +1,10 @@
 <template>
   <div :v-if="completed === false">
     <div>
-      {{ target }}
+      {{ target.ja }}
+    </div>
+    <div>
+      {{ target.word }}
     </div>
     <div>
       {{ remains }}
@@ -28,21 +31,24 @@ export default {
   name: "App",
   data: function () {
     return {
-      target: '',
-      remains: '',
-      targetChr: '',
+      target: {
+        word: "",
+        ja: "",
+      },
+      remains: "",
+      targetChr: "",
       completed: false,
       missCnt: 0,
-      key: '',
-      keyCode: '',
-      TypingData: TypingData,
+      key: "",
+      keyCode: "",
+      //TypingData: TypingData,
     };
   },
   mounted: function () {
     this.$nextTick(function () {
       this.TypingData = TypingData.sort(() => Math.random() - 0.5);
       this.target = this.TypingData.shift();
-      this.remains = this.target;
+      this.remains = this.target.word;
       this.targetChr = this.remains.substr(0, 1);
     });
   },
@@ -57,11 +63,15 @@ export default {
 
       if (this.remains.length === 0) {
         this.target = this.TypingData.shift();
-        this.remains = this.target;
-        this.inputText = '';
+        this.inputText = "";
         if (this.target) {
+          this.remains = this.target.word;
           this.targetChr = this.remains.substr(0, 1);
         } else {
+          this.target = {
+            word: "",
+            ja: "",
+          };
           this.completed = true;
         }
       }
