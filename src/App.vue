@@ -1,17 +1,65 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    {{ target }}
+  </div>
+  <div>
+    {{ targetChr }}
+  </div>
+
+  <input type="text" @keydown="onKeyDown" />
+
+  <h1 v-if="completed">OK＼(^o^)／</h1>
+  <pre>
+key: {{ key }}
+keyCode: {{ keyCode }}
+</pre>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TypingData from "./typing_data.json";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data: function () {
+    return {
+      target: "",
+      targetChr: "",
+      key: "",
+      keyCode: "",
+      completed: false,
+      TypingData: TypingData,
+    };
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+      this.TypingData = TypingData.sort(() => Math.random() - 0.5);
+
+      this.target = this.TypingData.shift();
+      this.targetChr = this.target.substr(0, 1);
+    });
+  },
+  methods: {
+    onKeyDown(event) {
+      if (event.key === this.targetChr) {
+        this.target = this.target.substr(1);
+        this.targetChr = this.target.substr(0, 1);
+      }
+
+      if (this.target.length === 0) {
+        this.target = this.TypingData.shift();
+        if (this.target) {
+          this.targetChr = this.target.substr(0, 1);
+        } else {
+          this.completed = true;
+        }
+      }
+
+      console.log(this.target);
+      this.key = event.key;
+      this.keyCode = event.keyCode;
+    },
+  },
+};
 </script>
 
 <style>
