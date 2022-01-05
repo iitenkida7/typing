@@ -55,10 +55,10 @@ export default {
     };
   },
   created: function () {
-      this.TypingData = TypingData.sort(() => Math.random() - 0.5);
-      this.target = this.TypingData.shift();
-      this.remains = this.target.word;
-      this.targetChr = this.remains.substr(0, 1);
+    this.TypingData = TypingData.sort(() => Math.random() - 0.5);
+    this.target = this.TypingData.shift();
+    this.remains = this.target.word;
+    this.targetChr = this.remains.substr(0, 1);
   },
   methods: {
     keyPress(event) {
@@ -94,5 +94,4 @@ export default {
 
 <style lang="scss">
 @import "bulma/bulma.sass";
-
 </style>
