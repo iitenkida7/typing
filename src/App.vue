@@ -1,27 +1,38 @@
 <template>
   <div :v-if="completed === false">
-    <div>
-      {{ target.ja }}
-    </div>
-    <div>
-      {{ target.word }}
+    <div class="columns">
+      <div class="column">
+        <p class="is-size-1">{{ target.word }}</p>
+      </div>
+      <div class="column">
+        <p class="is-size-2">{{ target.ja }}</p>
+      </div>
     </div>
     <div>
       {{ remains }}
     </div>
     <div>
-      {{ targetChr }}
+      <p class="is-size-1">{{ targetChr }}</p>
     </div>
+
     <h1 v-if="completed">OK＼(^o^)／</h1>
     <input type="text" v-model="inputText" @keyup="keyPress" />
   </div>
 
-  <pre>
-key: {{ key }}
-keyCode: {{ keyCode }}
-missCont: {{ missCnt }}
-</pre
-  >
+  <table class="table">
+    <tr>
+      <td>key</td>
+      <td>{{ key }}</td>
+    </tr>
+    <tr>
+      <td>keyCode</td>
+      <td>{{ keyCode }}</td>
+    </tr>
+    <tr>
+      <td>missCont</td>
+      <td>{{ missCnt }}</td>
+    </tr>
+  </table>
 </template>
 
 <script>
@@ -44,10 +55,10 @@ export default {
     };
   },
   created: function () {
-      this.TypingData = TypingData.sort(() => Math.random() - 0.5);
-      this.target = this.TypingData.shift();
-      this.remains = this.target.word;
-      this.targetChr = this.remains.substr(0, 1);
+    this.TypingData = TypingData.sort(() => Math.random() - 0.5);
+    this.target = this.TypingData.shift();
+    this.remains = this.target.word;
+    this.targetChr = this.remains.substr(0, 1);
   },
   methods: {
     keyPress(event) {
@@ -81,13 +92,6 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "bulma/bulma.sass";
 </style>
