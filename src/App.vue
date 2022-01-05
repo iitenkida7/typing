@@ -18,30 +18,21 @@
     <h1 v-if="completed">OK＼(^o^)／</h1>
     <input type="text" v-model="inputText" @keyup="keyPress" />
   </div>
-
-  <table class="table">
-    <tr>
-      <td>key</td>
-      <td>{{ key }}</td>
-    </tr>
-    <tr>
-      <td>keyCode</td>
-      <td>{{ keyCode }}</td>
-    </tr>
-    <tr>
-      <td>missCont</td>
-      <td>{{ missCnt }}</td>
-    </tr>
-  </table>
+  <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
 </template>
 
 <script>
 import TypingData from "./typing_data.json";
+import Debug from "./components/Debug.vue";
 
 export default {
   name: "App",
+  components: {
+    Debug,
+  },
   data: function () {
     return {
+      inputText: "",
       target: {
         word: "",
         ja: "",
@@ -50,7 +41,7 @@ export default {
       targetChr: "",
       completed: false,
       missCnt: 0,
-      key: "",
+      pressKey: "",
       keyCode: "",
     };
   },
@@ -85,7 +76,7 @@ export default {
       }
 
       //console.log(this.target);
-      this.key = event.key;
+      this.pressKey = event.key;
       this.keyCode = event.keyCode;
     },
   },
