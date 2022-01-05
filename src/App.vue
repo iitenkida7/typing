@@ -1,27 +1,38 @@
 <template>
   <div :v-if="completed === false">
-    <div>
-      {{ target.ja }}
-    </div>
-    <div>
-      {{ target.word }}
+    <div class="columns">
+      <div class="column">
+        <p class="is-size-1">{{ target.word }}</p>
+      </div>
+      <div class="column">
+        <p class="is-size-2">{{ target.ja }}</p>
+      </div>
     </div>
     <div>
       {{ remains }}
     </div>
     <div>
-      {{ targetChr }}
+      <p class="is-size-1">{{ targetChr }}</p>
     </div>
+
     <h1 v-if="completed">OK＼(^o^)／</h1>
     <input type="text" v-model="inputText" @keyup="keyPress" />
   </div>
 
-  <pre>
-key: {{ key }}
-keyCode: {{ keyCode }}
-missCont: {{ missCnt }}
-</pre
-  >
+  <table class="table">
+    <tr>
+      <td>key</td>
+      <td>{{ key }}</td>
+    </tr>
+    <tr>
+      <td>keyCode</td>
+      <td>{{ keyCode }}</td>
+    </tr>
+    <tr>
+      <td>missCont</td>
+      <td>{{ missCnt }}</td>
+    </tr>
+  </table>
 </template>
 
 <script>
