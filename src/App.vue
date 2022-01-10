@@ -17,6 +17,9 @@
 
     <h1 v-if="completed">OK＼(^o^)／</h1>
     <input type="text" v-model="inputText" @keyup="keyPress" />
+    <div>
+      <audio controls autoplay :src="'/audio/' + target.word + '.mp3'"></audio>
+    </div>
   </div>
   <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
 </template>
