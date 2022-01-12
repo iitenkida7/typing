@@ -14,6 +14,3 @@ install:
 
 logs:
 	docker-compose logs -f
-
-generate:
-	docker-compose run --rm node yarn generate
