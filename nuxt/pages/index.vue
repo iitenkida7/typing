@@ -20,19 +20,15 @@
     <div>
       <audio controls autoplay :src="'/audio/' + target.word + '.mp3'"></audio>
     </div>
+    <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
-  <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
 </template>
 
 <script>
-import TypingData from "./typing_data.json";
-import Debug from "./components/Debug.vue";
-
+import TypingData from "../typing_data.json"; // @todo: Change path
+import Debug from "../components/Debug.vue";
 export default {
-  name: "App",
-  components: {
-    Debug,
-  },
+  name: "IndexPage",
   data: function () {
     return {
       inputText: "",
@@ -62,7 +58,6 @@ export default {
       } else {
         this.missCnt++;
       }
-
       if (this.remains.length === 0) {
         this.target = this.TypingData.shift();
         this.inputText = "";
@@ -77,7 +72,6 @@ export default {
           this.completed = true;
         }
       }
-
       //console.log(this.target);
       this.pressKey = event.key;
       this.keyCode = event.keyCode;
@@ -85,7 +79,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-@import "bulma/bulma.sass";
-</style>

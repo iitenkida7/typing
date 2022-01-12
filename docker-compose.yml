@@ -1,0 +1,9 @@
+version: '2.0'
+services:
+  node:
+    build: ./docker/node
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./nuxt:/nuxt
+    user: 1000:1000
