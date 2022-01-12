@@ -1,9 +1,8 @@
 #!/bin/bash
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-DATA_JSON=${SCRIPT_DIR}/../src/typing_data.json
-DIST_DIR=${SCRIPT_DIR}/../public/audio
-
+DATA_JSON=${SCRIPT_DIR}/../nuxt/typing_data.json
+DIST_DIR=${SCRIPT_DIR}/../nuxt/public/audio
 export AWS_PAGER=""
 
 mkdir -p ${DIST_DIR}
