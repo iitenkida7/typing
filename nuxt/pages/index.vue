@@ -44,7 +44,7 @@ export default {
       keyCode: "",
     };
   },
-  created: function () {
+  mounted: function () {
     this.TypingData = TypingData.sort(() => Math.random() - 0.5);
     this.target = this.TypingData.shift();
     this.remains = this.target.word;
@@ -58,21 +58,18 @@ export default {
       } else {
         this.missCnt++;
       }
-      if (this.remains.length === 0) {
-        this.target = this.TypingData.shift();
+      if (this.remains.length === 0) {        
         this.inputText = "";
-        if (this.target) {
+        if (this.TypingData.length > 0) {
+          console.log(this.TypingData);
+          this.target = this.TypingData.shift();
           this.remains = this.target.word;
           this.targetChr = this.remains.substr(0, 1);
         } else {
-          this.target = {
-            word: "",
-            ja: "",
-          };
           this.completed = true;
         }
       }
-      //console.log(this.target);
+
       this.pressKey = event.key;
       this.keyCode = event.keyCode;
     },
