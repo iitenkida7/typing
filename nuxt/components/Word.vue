@@ -16,6 +16,6 @@
 <script>
 export default {
   name: "Word",
-  props: ["ja", "word", "targetChr"],
+  props: ["ja", "word", "remains", "targetChr"],
 };
 </script>

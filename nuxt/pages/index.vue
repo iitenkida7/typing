@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div :v-if="completed === false">
-      <Word :ja="target.ja" :word="target.word" :targetChr="targetChr" />
+      <Word :ja="target.ja" :remains="remains" :word="target.word" :targetChr="targetChr" />
       <div class="has-text-centered">
         <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
