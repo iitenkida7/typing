@@ -44,7 +44,6 @@ export default {
     this.target = this.TypingData.shift();
     this.remains = this.target.word;
     this.targetChr = this.remains.substr(0, 1);
-
     this.speech(this.target.word);
   },
   methods: {
@@ -79,7 +78,7 @@ export default {
     },
     speech(text) {
       const utter = new SpeechSynthesisUtterance(text);
-      const voice = window.speechSynthesis.getVoices()[0];
+      const voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
       utter.voice = voice;
       window.speechSynthesis.speak(utter);
     },
