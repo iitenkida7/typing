@@ -31,7 +31,6 @@
 
 <script>
 import TypingData from "../typing_data.json"; // @todo: Change path
-import Debug from "../components/Debug.vue";
 export default {
   name: "IndexPage",
   data: function () {
