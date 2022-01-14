@@ -67,6 +67,12 @@ export default {
     retry() {
       window.location.reload();
     },
+    speech(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      const voice = window.speechSynthesis.getVoices()[0];
+      utter.voice = voice;
+      window.speechSynthesis.speak(utter);
+    },
   },
 };
 </script>
