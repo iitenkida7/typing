@@ -15,7 +15,10 @@
       <p class="is-size-1">{{ targetChr }}</p>
     </div>
 
-    <h1 v-if="completed">OK＼(^o^)／</h1>
+    <div v-if="completed">
+      <h1>OK＼(^o^)／</h1>
+      <button v-on:click="retry">Retry</button>
+    </div>
     <input type="text" v-model="inputText" @keyup="keyPress" />
     <div>
       <audio controls autoplay :src="'/audio/' + target.word + '.mp3'"></audio>
@@ -58,7 +61,7 @@ export default {
       } else {
         this.missCnt++;
       }
-      if (this.remains.length === 0) {        
+      if (this.remains.length === 0) {
         this.inputText = "";
         if (this.TypingData.length > 0) {
           console.log(this.TypingData);
@@ -72,6 +75,9 @@ export default {
 
       this.pressKey = event.key;
       this.keyCode = event.keyCode;
+    },
+    retry() {
+      window.location.reload();
     },
   },
 };
