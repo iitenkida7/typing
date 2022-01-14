@@ -52,6 +52,7 @@ export default {
       if (this.remains.length === 0) {
         this.inputText = "";
         if (this.TypingData.length > 0) {
+          this.nextWord();
           console.log(this.TypingData);
           this.target = this.TypingData.shift();
           this.remains = this.target.word;
@@ -63,6 +64,12 @@ export default {
 
       this.pressKey = event.key;
       this.keyCode = event.keyCode;
+    },
+    nextWord() {
+      console.log(this.TypingData);
+      this.target = this.TypingData.shift();
+      this.remains = this.target.word;
+      this.targetChr = this.remains.substr(0, 1);
     },
     retry() {
       window.location.reload();
