@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-RUN apk --no-cache add git
+RUN apk --no-cache add git xdg-utils
 
 WORKDIR /nuxt
 EXPOSE 3000
