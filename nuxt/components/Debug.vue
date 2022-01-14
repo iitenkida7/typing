@@ -1,17 +1,19 @@
 <template>
   <table class="table">
-    <tr>
-      <td>pressKey</td>
-      <td>{{ pressKey }}</td>
-    </tr>
-    <tr>
-      <td>keyCode</td>
-      <td>{{ keyCode }}</td>
-    </tr>
-    <tr>
-      <td>missCont</td>
-      <td>{{ missCnt }}</td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>pressKey</td>
+        <td>{{ pressKey }}</td>
+      </tr>
+      <tr>
+        <td>keyCode</td>
+        <td>{{ keyCode }}</td>
+      </tr>
+      <tr>
+        <td>missCont</td>
+        <td>{{ missCnt }}</td>
+      </tr>
+    </tbody>
   </table>
 </template>
 
