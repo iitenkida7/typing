@@ -1,29 +1,35 @@
 <template>
-  <div :v-if="completed === false">
-    <div class="columns">
-      <div class="column">
-        <p class="is-size-1">{{ target.word }}</p>
+  <div class="container">
+    <div :v-if="completed === false">
+      <div class="columns">
+        <div class="column">
+          <p class="is-size-1">{{ target.word }}</p>
+        </div>
+        <div class="column">
+          <p class="is-size-2">{{ target.ja }}</p>
+        </div>
       </div>
-      <div class="column">
-        <p class="is-size-2">{{ target.ja }}</p>
+      <div>
+        {{ remains }}
       </div>
-    </div>
-    <div>
-      {{ remains }}
-    </div>
-    <div>
-      <p class="is-size-1">{{ targetChr }}</p>
-    </div>
+      <div>
+        <p class="is-size-1">{{ targetChr }}</p>
+      </div>
 
-    <div v-if="completed">
-      <h1>OK＼(^o^)／</h1>
-      <button v-on:click="retry">Retry</button>
+      <div v-if="completed">
+        <h1>OK＼(^o^)／</h1>
+        <button v-on:click="retry">Retry</button>
+      </div>
+      <input type="text" v-model="inputText" @keyup="keyPress" />
+      <div>
+        <audio
+          controls
+          autoplay
+          :src="'/audio/' + target.word + '.mp3'"
+        ></audio>
+      </div>
+      <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
     </div>
-    <input type="text" v-model="inputText" @keyup="keyPress" />
-    <div>
-      <audio controls autoplay :src="'/audio/' + target.word + '.mp3'"></audio>
-    </div>
-    <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
 </template>
 
