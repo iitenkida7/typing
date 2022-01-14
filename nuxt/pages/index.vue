@@ -6,11 +6,7 @@
       </div>
       <div class="has-text-centered">
         <p class="is-size-1">{{ target.word }}</p>
-        <audio
-          controls
-          autoplay
-          :src="'/audio/' + target.word + '.mp3'"
-        ></audio>
+        <Audio :word="target.word" />
       </div>
 
       <div class="has-text-centered">
