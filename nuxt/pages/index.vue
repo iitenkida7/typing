@@ -1,20 +1,7 @@
 <template>
   <div class="container">
     <div :v-if="completed === false">
-      <div class="has-text-centered">
-        <p class="is-size-2">{{ target.ja }}</p>
-      </div>
-      <div class="has-text-centered">
-        <p class="is-size-1">{{ target.word }}</p>
-        <Audio :word="target.word" />
-      </div>
-
-      <div class="has-text-centered">
-        {{ remains }}
-      </div>
-      <div class="has-text-centered">
-        <p class="is-size-1">{{ targetChr }}</p>
-      </div>
+      <Word :ja="target.ja" :word="target.word" :targetChr="targetChr" />
       <div class="has-text-centered">
         <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
@@ -23,6 +10,7 @@
         <h1>OK＼(^o^)／</h1>
         <button v-on:click="retry">Retry</button>
       </div>
+      <Audio :word="target.word" />
       <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
     </div>
   </div>
@@ -82,5 +70,4 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>
