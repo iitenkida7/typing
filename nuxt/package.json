@@ -7,5 +7,9 @@
   },
   "devDependencies": {
     "nuxt3": "3.0.0-27368185.a4f300b"
+  },
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "sass": "^1.48.0"
   }
 }
