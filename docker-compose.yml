@@ -6,5 +6,5 @@ services:
       - '3000:3000'
       - '24678:24678'
     volumes:
-      - ./nuxt:/nuxt
+      - ./nuxt:/nuxt:cached
     user: 1000:1000
