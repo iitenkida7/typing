@@ -1,4 +1,4 @@
-<template>
+<template><!-- Deprecation -->
         <audio
           controls
           autoplay

@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div :v-if="completed === false">
-      <Word :ja="target.ja" :remains="remains" :word="target.word" :targetChr="targetChr" />
+      <Word
+        :ja="target.ja"
+        :remains="remains"
+        :word="target.word"
+        :targetChr="targetChr"
+      />
       <div class="has-text-centered">
         <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
@@ -10,7 +15,6 @@
         <h1>OK＼(^o^)／</h1>
         <button v-on:click="retry">Retry</button>
       </div>
-      <Audio :word="target.word" />
       <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
     </div>
   </div>
@@ -35,11 +39,13 @@ export default {
       keyCode: "",
     };
   },
-  mounted: function () {
+  created: function () {
     this.TypingData = TypingData.sort(() => Math.random() - 0.5);
     this.target = this.TypingData.shift();
     this.remains = this.target.word;
     this.targetChr = this.remains.substr(0, 1);
+
+    this.speech(this.target.word);
   },
   methods: {
     keyPress(event) {
@@ -53,10 +59,7 @@ export default {
         this.inputText = "";
         if (this.TypingData.length > 0) {
           this.nextWord();
-          console.log(this.TypingData);
-          this.target = this.TypingData.shift();
-          this.remains = this.target.word;
-          this.targetChr = this.remains.substr(0, 1);
+          this.speech(this.target.word);
         } else {
           this.completed = true;
         }
