@@ -23,7 +23,6 @@
         <h1>OK＼(^o^)／</h1>
         <button v-on:click="retry">Retry</button>
       </div>
-      <div></div>
       <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
     </div>
   </div>
