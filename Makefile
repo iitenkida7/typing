@@ -12,5 +12,8 @@ install:
 	docker-compose build
 	docker-compose run --rm node yarn install
 
+yarn-update:
+	docker-compose run --rm node yarn upgrade --latest
+
 logs:
 	docker-compose logs -f
