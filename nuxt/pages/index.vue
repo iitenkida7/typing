@@ -16,20 +16,16 @@
         <button v-on:click="retry">Retry</button>
       </div>
       <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
-         <li v-for="photo in photos">
-          <img :src="photo.url_s">
-        </li>
+      <li v-for="photo in photos" :key="photo.item">
+        <img :src="photo.url_s" />
+      </li>
     </div>
   </div>
 </template>
 
-<script setup>
-      const url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2da67eccedeb0b110a63374c5c53cc41&per_page=10&text=bed&extras=url_s&sort=relevance&media=photos&safe_search=1&format=json&nojsoncallback=1";
-      const { data } = await useFetch(url);
-      const photos = data.value.photos.photo;
-</script>
 <script>
 import TypingData from "../typing_data.json"; // @todo: Change path
+import axios from "axios";
 export default {
   name: "IndexPage",
   data: function () {
@@ -45,6 +41,7 @@ export default {
       missCnt: 0,
       pressKey: "",
       keyCode: "",
+      photos: null,
     };
   },
   mounted: function () {
@@ -54,7 +51,8 @@ export default {
     this.target = this.TypingData.shift();
     this.remains = this.target.word;
     this.targetChr = this.remains.substr(0, 1);
-
+    console.log("aaa", this.target.word);
+    this.getImage(this.target.word);
     this.speech(this.target.word);
   },
   methods: {
@@ -69,6 +67,7 @@ export default {
         this.inputText = "";
         if (this.TypingData.length > 0) {
           this.nextWord();
+          this.getImage(this.target.word);
           this.speech(this.target.word);
         } else {
           this.completed = true;
@@ -91,6 +90,15 @@ export default {
       const voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
       utter.voice = voice;
       window.speechSynthesis.speak(utter);
+    },
+    getImage(text) {
+      const url =
+        "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2da67eccedeb0b110a63374c5c53cc41&per_page=10&text=" +
+        text +
+        "&extras=url_s&sort=relevance&media=photos&safe_search=1&format=json&nojsoncallback=1";
+      axios
+        .get(url)
+        .then((response) => (this.photos = response.data.photos.photo));
     },
   },
 };
