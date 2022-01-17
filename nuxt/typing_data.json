@@ -1,7 +1,7 @@
 [
   {
     "word": "yellow",
-    "ja": "黄色"
+    "ja": "きいろ"
   },
   {
     "word": "bed",
@@ -9,10 +9,42 @@
   },
   {
     "word": "box",
-    "ja": "箱"
+    "ja": "はこ"
   },
   {
     "word": "boy",
-    "ja": "男の子"
+    "ja": "おとこのこ"
+  },
+  {
+    "word": "starbucks",
+    "ja": "スターバックス"
+  },
+  {
+    "word": "piano",
+    "ja": "ピアノ"
+  },
+  {
+    "word": "hamburger",
+    "ja": "ハンバーガー"
+  },
+  {
+    "word": "mcdonald",
+    "ja": "マクドナルド"
+  },
+  {
+    "word": "aircraft",
+    "ja": "ひこうき"
+  },
+  {
+    "word": "shoes",
+    "ja": "くつ"
+  },
+  {
+    "word": "green",
+    "ja": "みどり"
+  },
+  {
+    "word": "sea",
+    "ja": "うみ"
   }
 ]
