@@ -16,9 +16,7 @@
         <button v-on:click="retry">Retry</button>
       </div>
       <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
-      <li v-for="photo in photos" :key="photo.item">
-        <img :src="photo.url_s" />
-      </li>
+      <Images :photos="photos" />
     </div>
   </div>
 </template>
