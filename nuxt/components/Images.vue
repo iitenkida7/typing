@@ -1,9 +1,9 @@
 <template>
-<ul>
-  <li v-for="photo in photos" :key="photo.item">
-    <img :src="photo.url_s" />
-  </li>
-</ul>
+  <div class="columns">
+    <div class="column" v-for="photo in photos" :key="photo.item">
+      <img :src="photo.url_s" />
+    </div>
+  </div>
 </template>
 
 <script>

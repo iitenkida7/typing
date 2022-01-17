@@ -15,8 +15,8 @@
         <h1>OK＼(^o^)／</h1>
         <button v-on:click="retry">Retry</button>
       </div>
-      <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
       <Images :photos="photos" />
+      <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
     </div>
   </div>
 </template>
