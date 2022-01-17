@@ -16,10 +16,18 @@
         <button v-on:click="retry">Retry</button>
       </div>
       <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
+         <li v-for="photo in photos">
+          <img :src="photo.url_s">
+        </li>
     </div>
   </div>
 </template>
 
+<script setup>
+      const url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2da67eccedeb0b110a63374c5c53cc41&per_page=10&text=bed&extras=url_s&sort=relevance&media=photos&safe_search=1&format=json&nojsoncallback=1";
+      const { data } = await useFetch(url);
+      const photos = data.value.photos.photo;
+</script>
 <script>
 import TypingData from "../typing_data.json"; // @todo: Change path
 export default {
@@ -39,7 +47,7 @@ export default {
       keyCode: "",
     };
   },
-  created: function () {
+  mounted: function () {
     this.TypingData = TypingData.sort(() => Math.random() - 0.5);
 
     // @todo: duplicated code
@@ -71,7 +79,9 @@ export default {
       this.keyCode = event.keyCode;
     },
     nextWord() {
-      console.log(this.TypingData);
+          console.log(this.photos);
+
+     // console.log(this.TypingData);
       this.target = this.TypingData.shift();
       this.remains = this.target.word;
       this.targetChr = this.remains.substr(0, 1);
