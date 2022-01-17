@@ -79,9 +79,6 @@ export default {
       this.keyCode = event.keyCode;
     },
     nextWord() {
-          console.log(this.photos);
-
-     // console.log(this.TypingData);
       this.target = this.TypingData.shift();
       this.remains = this.target.word;
       this.targetChr = this.remains.substr(0, 1);
