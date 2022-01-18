@@ -97,6 +97,7 @@ export default {
       axios
         .get(url)
         .then((response) => (this.photos = response.data.photos.photo));
+        // @todo: not stylish!
     },
   },
 };
