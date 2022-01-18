@@ -83,8 +83,7 @@ export default {
     },
     speech(text) {
       const utter = new SpeechSynthesisUtterance(text);
-      const voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
-      utter.voice = voice;
+      utter.voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
       window.speechSynthesis.speak(utter);
     },
     getImage(text) {
