@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div :v-if="!completed">
+    <div v-if="isStarted && !completed">
       <Word
         :ja="target.ja"
         :remains="remains"
@@ -12,7 +12,10 @@
         <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
     </div>
-    <div class="has-text-centered" v-if="completed">
+    <div v-if="!isStarted" class="has-text-centered">
+      <button v-on:click="start" class="has-text-centered">Start</button>
+    </div>
+    <div v-if="completed" class="has-text-centered">
       <h1>OK＼(^o^)／</h1>
       <button v-on:click="retry">Retry</button>
     </div>
@@ -26,6 +29,7 @@ export default {
   name: "IndexPage",
   data: function () {
     return {
+      isStarted: false,
       inputText: "",
       target: {
         word: "",
@@ -39,16 +43,15 @@ export default {
       keyCode: "",
     };
   },
-  mounted: function () {
+  created: function () {
     this.TypingData = TypingData.sort(() => Math.random() - 0.5);
-
-    // @todo: duplicated code
-    this.target = this.TypingData.shift();
-    this.remains = this.target.word;
-    this.targetChr = this.remains.substr(0, 1);
-    this.speech(this.target.word);
   },
   methods: {
+    start() {
+      this.isStarted = true;
+      this.nextWord();
+      this.speech(this.target.word);
+    },
     keyPress(event) {
       if (event.key === this.targetChr) {
         this.remains = this.remains.substr(1);
@@ -82,7 +85,6 @@ export default {
       utter.voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
       window.speechSynthesis.speak(utter);
     },
-
   },
 };
 </script>
