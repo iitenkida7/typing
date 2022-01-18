@@ -49,7 +49,6 @@ export default {
     this.target = this.TypingData.shift();
     this.remains = this.target.word;
     this.targetChr = this.remains.substr(0, 1);
-    console.log("aaa", this.target.word);
     this.getImage(this.target.word);
     this.speech(this.target.word);
   },
@@ -90,14 +89,24 @@ export default {
       window.speechSynthesis.speak(utter);
     },
     getImage(text) {
-      const url =
-        "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2da67eccedeb0b110a63374c5c53cc41&per_page=10&text=" +
-        text +
-        "&extras=url_s&sort=relevance&media=photos&safe_search=1&format=json&nojsoncallback=1";
+      const flickrApiEndpoint =
+        "https://api.flickr.com//services/rest/?" +
+        new URLSearchParams({
+          method: "flickr.photos.search",
+          api_key: "2da67eccedeb0b110a63374c5c53cc41",
+          per_page: 10,
+          extras: "url_s",
+          sort: "relevance",
+          media: "photos",
+          safe_search: 1,
+          format: "json",
+          nojsoncallback: 1,
+          text: text,
+        }).toString();
       axios
-        .get(url)
+        .get(flickrApiEndpoint)
         .then((response) => (this.photos = response.data.photos.photo));
-        // @todo: not stylish!
+      // @todo: not stylish!
     },
   },
 };
