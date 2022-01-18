@@ -22,7 +22,6 @@
 
 <script>
 import TypingData from "../typing_data.json"; // @todo: Change path
-import axios from "axios";
 export default {
   name: "IndexPage",
   data: function () {
