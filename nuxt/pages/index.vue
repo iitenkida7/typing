@@ -1,23 +1,22 @@
 <template>
   <div class="container">
-    <div :v-if="completed === false">
+    <div :v-if="!completed">
       <Word
         :ja="target.ja"
         :remains="remains"
         :word="target.word"
         :targetChr="targetChr"
       />
+      <Images class="mt-6" :photos="photos" />
       <div class="has-text-centered">
         <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
-
-      <div class="has-text-centered" v-if="completed">
-        <h1>OK＼(^o^)／</h1>
-        <button v-on:click="retry">Retry</button>
-      </div>
-      <Images :photos="photos" />
-      <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
     </div>
+    <div class="has-text-centered" v-if="completed">
+      <h1>OK＼(^o^)／</h1>
+      <button v-on:click="retry">Retry</button>
+    </div>
+    <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
 </template>
 
