@@ -7,7 +7,7 @@
         :word="target.word"
         :targetChr="targetChr"
       />
-      <Images class="mt-6" :photos="photos" />
+      <Images class="mt-6" :word="target.word" />
       <div class="has-text-centered">
         <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
@@ -38,7 +38,6 @@ export default {
       missCnt: 0,
       pressKey: "",
       keyCode: "",
-      photos: null,
     };
   },
   mounted: function () {
@@ -48,7 +47,6 @@ export default {
     this.target = this.TypingData.shift();
     this.remains = this.target.word;
     this.targetChr = this.remains.substr(0, 1);
-    this.getImage(this.target.word);
     this.speech(this.target.word);
   },
   methods: {
@@ -63,7 +61,6 @@ export default {
         this.inputText = "";
         if (this.TypingData.length > 0) {
           this.nextWord();
-          this.getImage(this.target.word);
           this.speech(this.target.word);
         } else {
           this.completed = true;
@@ -86,26 +83,7 @@ export default {
       utter.voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
       window.speechSynthesis.speak(utter);
     },
-    getImage(text) {
-      const flickrApiEndpoint =
-        "https://api.flickr.com//services/rest/?" +
-        new URLSearchParams({
-          method: "flickr.photos.search",
-          api_key: "2da67eccedeb0b110a63374c5c53cc41",
-          per_page: 10,
-          extras: "url_s",
-          sort: "relevance",
-          media: "photos",
-          safe_search: 1,
-          format: "json",
-          nojsoncallback: 1,
-          text: text,
-        }).toString();
-      axios
-        .get(flickrApiEndpoint)
-        .then((response) => (this.photos = response.data.photos.photo));
-      // @todo: not stylish!
-    },
+
   },
 };
 </script>
