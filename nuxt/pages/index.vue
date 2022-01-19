@@ -9,7 +9,7 @@
       />
       <Images class="mt-6" :word="target.word" />
       <div class="has-text-centered">
-        <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
+        <input ref="target" type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
@@ -20,11 +20,13 @@
       <button v-on:click="retry">Retry</button>
     </div>
     <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
+     <button v-on:click="cracker">cracker</button>
   </div>
 </template>
 
 <script>
 import TypingData from "../typing_data.json"; // @todo: Change path
+import * as confetti from "canvas-confetti";
 export default {
   name: "IndexPage",
   data: function () {
@@ -56,6 +58,7 @@ export default {
       if (event.key === this.targetChr) {
         this.remains = this.remains.substr(1);
         this.targetChr = this.remains.substr(0, 1);
+        this.cracker();
       } else {
         this.missCnt++;
       }
@@ -84,6 +87,18 @@ export default {
       const utter = new SpeechSynthesisUtterance(text);
       utter.voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
       window.speechSynthesis.speak(utter);
+    },
+    cracker() {
+      console.log(this.$refs.target);
+      confetti.create(this.$refs.target.$el)({
+        shapes: ["square"],
+        particleCount: 10,
+        spread: 90,
+        origin: {
+          y: 1,
+          x: 0.5,
+        },
+      });
     },
   },
 };
