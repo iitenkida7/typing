@@ -9,8 +9,10 @@
       />
       <Images class="mt-6" :word="target.word" />
       <div class="has-text-centered">
-        <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
         <canvas ref="target"></canvas>
+      </div>
+      <div class="has-text-centered">
+        <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
       </div>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
