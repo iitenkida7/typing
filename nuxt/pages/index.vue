@@ -9,7 +9,8 @@
       />
       <Images class="mt-6" :word="target.word" />
       <div class="has-text-centered">
-        <input ref="target" type="text" autofocus v-model="inputText" @keyup="keyPress" />
+        <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
+        <canvas ref="target"></canvas>
       </div>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
@@ -20,7 +21,6 @@
       <button v-on:click="retry">Retry</button>
     </div>
     <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
-     <button v-on:click="cracker">cracker</button>
   </div>
 </template>
 
@@ -89,8 +89,7 @@ export default {
       window.speechSynthesis.speak(utter);
     },
     cracker() {
-      console.log(this.$refs.target);
-      confetti.create(this.$refs.target.$el)({
+      confetti.create(this.$refs.target)({
         shapes: ["square"],
         particleCount: 10,
         spread: 90,
