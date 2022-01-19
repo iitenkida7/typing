@@ -1,0 +1,60 @@
+{
+  "lesson001": {
+    "description": "簡単なワード１",
+    "words": [
+      {
+        "word": "yellow",
+        "ja": "きいろ"
+      },
+      {
+        "word": "bed",
+        "ja": "ベット"
+      },
+      {
+        "word": "box",
+        "ja": "はこ"
+      },
+      {
+        "word": "boy",
+        "ja": "おとこのこ"
+      }
+    ]
+  },
+  "lesson002": {
+    "description": "簡単なワード2",
+    "words": [
+      {
+        "word": "starbucks",
+        "ja": "スターバックス"
+      },
+      {
+        "word": "piano",
+        "ja": "ピアノ"
+      },
+      {
+        "word": "hamburger",
+        "ja": "ハンバーガー"
+      },
+      {
+        "word": "mcdonald",
+        "ja": "マクドナルド"
+      },
+      {
+        "word": "aircraft",
+        "ja": "ひこうき"
+      },
+      {
+        "word": "shoes",
+        "ja": "くつ"
+      },
+      {
+        "word": "green",
+        "ja": "みどり"
+      },
+      {
+        "word": "sea",
+        "ja": "うみ"
+      }
+    ]
+  }
+}

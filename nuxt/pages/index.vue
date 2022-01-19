@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import TypingData from "../typing_data.json"; // @todo: Change path
+import Lesson from "@/assets/json/lesson.json";
 import * as confetti from "canvas-confetti";
 export default {
   name: "IndexPage",
@@ -48,7 +48,7 @@ export default {
     };
   },
   created: function () {
-    this.TypingData = TypingData.sort(() => Math.random() - 0.5);
+    this.TypingData = Lesson.lesson002.words.sort(() => Math.random() - 0.5);
   },
   methods: {
     start() {
