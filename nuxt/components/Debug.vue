@@ -1,16 +1,16 @@
 <template>
   <table class="table">
+    <thead>
+      <tr>
+        <th>pressKey</th>
+        <th>keyCode</th>
+        <th>missCont</th>
+      </tr>
+    </thead>
     <tbody>
       <tr>
-        <td>pressKey</td>
         <td>{{ pressKey }}</td>
-      </tr>
-      <tr>
-        <td>keyCode</td>
         <td>{{ keyCode }}</td>
-      </tr>
-      <tr>
-        <td>missCont</td>
         <td>{{ missCnt }}</td>
       </tr>
     </tbody>
