@@ -1,27 +1,44 @@
 <template>
-  <div v-if="isStarted && !completed">
-    <Word
-      :ja="target.ja"
-      :remains="remains"
-      :word="target.word"
-      :targetChr="targetChr"
-    />
-    <Images class="mt-6" :word="target.word" />
-    <div class="has-text-centered">
-      <canvas ref="target"></canvas>
+  <div>
+    <div v-if="isStarted && !completed">
+      <Word
+        :ja="target.ja"
+        :remains="remains"
+        :word="target.word"
+        :targetChr="targetChr"
+      />
+      <div class="has-text-centered">
+        <canvas ref="target"></canvas>
+      </div>
+      <div class="has-text-centered">
+        <input
+          :class="[
+            'input',
+            'is-large',
+            'has-text-centered',
+            { 'is-info': isMatch },
+            { 'is-danger': isMiss },
+          ]"
+          class=""
+          type="text"
+          autofocus
+          v-model="inputText"
+          @keyup="keyPress"
+        />
+      </div>
+      <Images class="mt-6" :word="target.word" />
     </div>
-    <div class="has-text-centered">
-      <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
+    <div v-if="!isStarted" class="has-text-centered">
+      <button v-on:click="start" class="button is-primary is-large">
+        Start
+      </button>
     </div>
+    <div v-if="completed" class="has-text-centered">
+      <p class="has-text-info">Completed!＼(^o^)／</p>
+      <button class="button is-primary is-large" v-on:click="retry">Retry</button>
+    </div>
+    <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
-  <div v-if="!isStarted" class="has-text-centered">
-    <button v-on:click="start" class="has-text-centered">Start</button>
-  </div>
-  <div v-if="completed" class="has-text-centered">
-    <h1>OK＼(^o^)／</h1>
-    <button v-on:click="retry">Retry</button>
-  </div>
-  <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
 </template>
 
 <script>
@@ -43,6 +60,8 @@ export default {
       missCnt: 0,
       pressKey: "",
       keyCode: "",
+      isMatch: null,
+      isMiss: null,
     };
   },
   created: function () {
@@ -59,8 +78,12 @@ export default {
         this.remains = this.remains.substr(1);
         this.targetChr = this.remains.substr(0, 1);
         this.cracker();
+        this.isMatch = true;
+        this.isMiss = false;
       } else {
         this.missCnt++;
+        this.isMatch = false;
+        this.isMiss = true;
       }
       if (this.remains.length === 0) {
         this.inputText = "";
@@ -91,7 +114,7 @@ export default {
     cracker() {
       confetti.create(this.$refs.target)({
         shapes: ["square"],
-        particleCount: 10,
+        particleCount: 15,
         spread: 90,
         origin: {
           y: 1,
