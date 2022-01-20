@@ -27,6 +27,9 @@
         />
       </div>
       <Images class="mt-6" :word="target.word" />
+      <div v-if="isMatch">
+         <Audio />
+      </div>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
       <button v-on:click="start" class="button is-primary is-large">
@@ -121,6 +124,8 @@ export default {
           x: 0.5,
         },
       });
+
+
     },
   },
 };

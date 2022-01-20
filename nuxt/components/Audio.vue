@@ -1,14 +1,3 @@
-<template><!-- Deprecation -->
-        <audio
-          controls
-          autoplay
-          :src="'/audio/' + word + '.mp3'"
-        ></audio>
+<template>
+  <audio controls autoplay src="/sound/dram.mp3"></audio>
 </template>
-
-<script>
-export default {
-  name: "Audio",
-  props: ["word"],
-};
-</script>
