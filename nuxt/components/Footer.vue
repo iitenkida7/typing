@@ -1,7 +1,17 @@
 <template>
-  <footer class="footer">
+  <footer class="layout-footer footer">
     <div class="content has-text-centered">
-      <p>Footer</p>
+      <p>Typing</p>
     </div>
   </footer>
 </template>
+
+<style>
+.layout-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  z-index: 9999;
+}
+</style>
