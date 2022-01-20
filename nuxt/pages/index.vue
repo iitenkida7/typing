@@ -1,11 +1,9 @@
 <template>
-  <div class="container">
-    <ul>
-      <li v-for="lesson in lessons" :key="lesson">
-        <NuxtLink to="/lesson">{{ lesson }}</NuxtLink>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li v-for="lesson in lessons" :key="lesson">
+      <NuxtLink to="/lesson">{{ lesson }}</NuxtLink>
+    </li>
+  </ul>
 </template>
 
 <script>

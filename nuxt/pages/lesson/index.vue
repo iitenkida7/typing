@@ -1,29 +1,27 @@
 <template>
-  <div class="container">
-    <div v-if="isStarted && !completed">
-      <Word
-        :ja="target.ja"
-        :remains="remains"
-        :word="target.word"
-        :targetChr="targetChr"
-      />
-      <Images class="mt-6" :word="target.word" />
-      <div class="has-text-centered">
-        <canvas ref="target"></canvas>
-      </div>
-      <div class="has-text-centered">
-        <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
-      </div>
+  <div v-if="isStarted && !completed">
+    <Word
+      :ja="target.ja"
+      :remains="remains"
+      :word="target.word"
+      :targetChr="targetChr"
+    />
+    <Images class="mt-6" :word="target.word" />
+    <div class="has-text-centered">
+      <canvas ref="target"></canvas>
     </div>
-    <div v-if="!isStarted" class="has-text-centered">
-      <button v-on:click="start" class="has-text-centered">Start</button>
+    <div class="has-text-centered">
+      <input type="text" autofocus v-model="inputText" @keyup="keyPress" />
     </div>
-    <div v-if="completed" class="has-text-centered">
-      <h1>OK＼(^o^)／</h1>
-      <button v-on:click="retry">Retry</button>
-    </div>
-    <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
+  <div v-if="!isStarted" class="has-text-centered">
+    <button v-on:click="start" class="has-text-centered">Start</button>
+  </div>
+  <div v-if="completed" class="has-text-centered">
+    <h1>OK＼(^o^)／</h1>
+    <button v-on:click="retry">Retry</button>
+  </div>
+  <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
 </template>
 
 <script>
