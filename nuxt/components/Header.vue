@@ -4,7 +4,7 @@
       <NuxtLink class="navbar-item" to="/">
         <img
           src="https://bulma.io/images/bulma-logo.png"
-          alt="Bulma: a modern CSS framework based on Flexbox"
+          alt="Typing"
           width="112"
           height="28"
         />
