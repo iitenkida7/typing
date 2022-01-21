@@ -16,6 +16,9 @@ export default {
       photos: null,
     };
   },
+  mounted: function () {
+    this.getImage(this.word);
+  },
   watch: {
     word: function (word, oldWord) {
       this.getImage(word);
