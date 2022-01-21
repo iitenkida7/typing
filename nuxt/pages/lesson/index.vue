@@ -27,9 +27,6 @@
         />
       </div>
       <Images class="mt-6" :word="target.word" />
-      <div v-if="isMatch">
-         <Sound />
-      </div>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
       <button v-on:click="start" class="button is-primary is-large">
@@ -38,7 +35,9 @@
     </div>
     <div v-if="completed" class="has-text-centered">
       <p class="has-text-info">Completed!＼(^o^)／</p>
-      <button class="button is-primary is-large" v-on:click="retry">Retry</button>
+      <button class="button is-primary is-large" v-on:click="retry">
+        Retry
+      </button>
     </div>
     <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
@@ -80,13 +79,15 @@ export default {
       if (event.key === this.targetChr) {
         this.remains = this.remains.substr(1);
         this.targetChr = this.remains.substr(0, 1);
-        this.cracker();
         this.isMatch = true;
         this.isMiss = false;
+        this.cracker();
+        this.playDram();
       } else {
         this.missCnt++;
         this.isMatch = false;
         this.isMiss = true;
+        this.playBeep();
       }
       if (this.remains.length === 0) {
         this.inputText = "";
@@ -124,8 +125,14 @@ export default {
           x: 0.5,
         },
       });
-
-
+    },
+    playDram() {
+      const dram = new Audio("/sounds/dram.mp3");
+      dram.play();
+    },
+    playBeep() {
+      const beep = new Audio("/sounds/beep.mp3");
+      beep.play();
     },
   },
 };
