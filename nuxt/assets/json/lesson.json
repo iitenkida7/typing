@@ -3,9 +3,50 @@
     "description": "簡単なワード１",
     "words": [
       {
-        "word": "yellow",
-        "ja": "きいろ"
+        "word": "dolphin",
+        "ja": "いるか"
       },
+      {
+        "word": "octopus",
+        "ja": "たこ"
+      },
+      {
+        "word": "sea",
+        "ja": "うみ"
+      },
+      {
+        "word": "shark",
+        "ja": "さめ"
+      },
+      {
+        "word": "surfing",
+        "ja": "サーフィン🏄"
+      },
+      {
+        "word": "beach",
+        "ja": "ビーチ"
+      },
+      {
+        "word": "boat",
+        "ja": "船⛵"
+      },
+      {
+        "word": "squid",
+        "ja": "イカ"
+      },
+      {
+        "word": "shellfish",
+        "ja": "貝"
+      },
+      {
+        "word": "shrimp",
+        "ja": "エビ"
+      }
+    ]
+  },
+  "lesson002": {
+    "description": "簡単なワード2",
+    "words": [
       {
         "word": "good morning",
         "ja": "おはよう"
@@ -13,12 +54,7 @@
       {
         "word": "Hello",
         "ja": "こんにちは"
-      }
-    ]
-  },
-  "lesson002": {
-    "description": "簡単なワード2",
-    "words": [
+      },
       {
         "word": "bed",
         "ja": "ベット"
