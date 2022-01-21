@@ -127,11 +127,11 @@ export default {
       });
     },
     playDram() {
-      const dram = new Audio("/sounds/dram.mp3");
+      const dram = new Audio("/sounds/dram.mp3"); // @todo: move created
       dram.play();
     },
     playBeep() {
-      const beep = new Audio("/sounds/beep.mp3");
+      const beep = new Audio("/sounds/beep.mp3"); // @todo: move created
       beep.play();
     },
   },
