@@ -28,7 +28,7 @@
       </div>
       <Images class="mt-6" :word="target.word" />
       <div v-if="isMatch">
-         <Audio />
+         <Sound />
       </div>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
