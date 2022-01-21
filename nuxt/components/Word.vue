@@ -7,10 +7,10 @@
       <p class="is-size-1">{{ word }}</p>
     </div>
     <div class="has-text-centered">
-      {{ remains }}
+      {{ remains.replace(" ", "␣") }}
     </div>
     <div class="has-text-centered">
-      <p class="is-size-1">{{ targetChr }}</p>
+      <p class="is-size-1">{{ targetChr.replace(" ", "␣") }}</p>
     </div>
   </div>
 </template>
