@@ -84,6 +84,7 @@ export default {
         this.cracker();
         this.playDram();
       } else {
+        this.inputText = this.inputText.slice(0, -1);
         this.missCnt++;
         this.isMatch = false;
         this.isMiss = true;
@@ -112,7 +113,7 @@ export default {
     },
     speech(text) {
       const utter = new SpeechSynthesisUtterance();
-      utter.voice = window.speechSynthesis.getVoices()[41];  //Victoria
+      utter.voice = window.speechSynthesis.getVoices()[41]; //Victoria
       utter.rate = 0.75;
       utter.text = text;
       window.speechSynthesis.speak(utter);
