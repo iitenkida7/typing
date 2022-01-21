@@ -66,7 +66,7 @@ export default {
     };
   },
   created: function () {
-    this.TypingData = Lesson.lesson002.words.sort(() => Math.random() - 0.5);
+    this.TypingData = Lesson.lesson001.words.sort(() => Math.random() - 0.5);
     window.speechSynthesis.getVoices(); // dummy call.
   },
   methods: {
@@ -76,7 +76,7 @@ export default {
       this.speech(this.target.word);
     },
     keyPress(event) {
-      if (event.key === this.targetChr) {
+      if (this.checkChr(this.targetChr, event.key)) {
         this.remains = this.remains.substr(1);
         this.targetChr = this.remains.substr(0, 1);
         this.isMatch = true;
@@ -102,6 +102,12 @@ export default {
 
       this.pressKey = event.key;
       this.keyCode = event.keyCode;
+    },
+    checkChr(target, input) {
+      if (target.toLowerCase() === input.toLowerCase()) {
+        return true;
+      }
+      return false;
     },
     nextWord() {
       this.target = this.TypingData.shift();
