@@ -7,6 +7,19 @@
         "ja": "きいろ"
       },
       {
+        "word": "good morning",
+        "ja": "おはよう"
+      },
+      {
+        "word": "Hello",
+        "ja": "こんにちは"
+      }
+    ]
+  },
+  "lesson002": {
+    "description": "簡単なワード2",
+    "words": [
+      {
         "word": "bed",
         "ja": "ベット"
       },
@@ -17,12 +30,7 @@
       {
         "word": "boy",
         "ja": "おとこのこ"
-      }
-    ]
-  },
-  "lesson002": {
-    "description": "簡単なワード2",
-    "words": [
+      },
       {
         "word": "starbucks",
         "ja": "スターバックス"
