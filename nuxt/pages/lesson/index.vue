@@ -19,7 +19,6 @@
             { 'is-info': isMatch },
             { 'is-danger': isMiss },
           ]"
-          class=""
           type="text"
           autofocus
           v-model="inputText"
