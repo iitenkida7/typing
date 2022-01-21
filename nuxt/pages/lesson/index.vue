@@ -67,6 +67,7 @@ export default {
   },
   created: function () {
     this.TypingData = Lesson.lesson002.words.sort(() => Math.random() - 0.5);
+    window.speechSynthesis.getVoices(); // dummy call.
   },
   methods: {
     start() {
@@ -110,15 +111,18 @@ export default {
       window.location.reload();
     },
     speech(text) {
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.voice = window.speechSynthesis.getVoices()[41]; //'Victoria'
+      const utter = new SpeechSynthesisUtterance();
+      utter.voice = window.speechSynthesis.getVoices()[41];  //Victoria
+      utter.rate = 0.75;
+      utter.text = text;
       window.speechSynthesis.speak(utter);
     },
     cracker() {
       confetti.create(this.$refs.target)({
         shapes: ["square"],
-        particleCount: 15,
-        spread: 90,
+        particleCount: 20,
+        spread: 120,
+        //zIndex: 999,
         origin: {
           y: 1,
           x: 0.5,
