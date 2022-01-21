@@ -91,8 +91,8 @@ export default {
         this.playBeep();
       }
       if (this.remains.length === 0) {
-        this.inputText = "";
         if (this.TypingData.length > 0) {
+          this.inputText = "";
           this.nextWord();
           this.speech(this.target.word);
         } else {
