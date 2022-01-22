@@ -41,6 +41,7 @@
         Retry
       </button>
     </div>
+    <Keyboard />
     <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
 </template>
