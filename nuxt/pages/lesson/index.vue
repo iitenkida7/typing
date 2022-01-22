@@ -11,6 +11,9 @@
         <canvas ref="target"></canvas>
       </div>
       <div class="has-text-centered">
+        <p class="button is-black is-size-1">{{ targetChr.replace(" ", "␣").toUpperCase()  }}</p>
+      </div>
+      <div class="has-text-centered">
         <input
           :class="[
             'input',
