@@ -10,7 +10,7 @@
       {{ remains.replace(" ", "␣") }}
     </div>
     <div class="has-text-centered">
-      <p class="is-size-1">{{ targetChr.replace(" ", "␣") }}</p>
+      <p class="is-size-1">{{ targetChr.replace(" ", "␣").toUpperCase()  }}</p>
     </div>
   </div>
 </template>
