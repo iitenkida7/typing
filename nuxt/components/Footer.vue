@@ -1,5 +1,6 @@
 <template>
-  <footer class="layout-footer footer">
+  <!--   <footer class="layout-footer footer"> -->
+  <footer class="layout-footer">
     <div class="content has-text-centered">
       <p>Typing</p>
     </div>
