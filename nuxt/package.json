@@ -6,7 +6,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt3": "3.0.0-27379487.e0cf2d7"
+    "nuxt3": "3.0.0-27383750.2b86345"
   },
   "dependencies": {
     "axios": "^0.25.0",
