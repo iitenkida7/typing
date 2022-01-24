@@ -1,6 +1,6 @@
 {
   "lesson001": {
-    "description": "簡単なワード１",
+    "description": "海の生き物",
     "words": [
       {
         "word": "dolphin",
@@ -11,12 +11,42 @@
         "ja": "たこ"
       },
       {
-        "word": "sea",
-        "ja": "うみ"
-      },
-      {
         "word": "shark",
         "ja": "さめ"
+      },
+      {
+        "word": "squid",
+        "ja": "イカ"
+      },
+      {
+        "word": "shellfish",
+        "ja": "貝"
+      },
+      {
+        "word": "whale",
+        "ja": "くじら"
+      },
+      {
+        "word": "salmon",
+        "ja": "サーモン"
+      },
+      {
+        "word": "jellyfish",
+        "ja": "クラゲ"
+      },
+      {
+        "word": "shrimp",
+        "ja": "エビ"
+      }
+    ]
+  },
+  
+  "lesson002": {
+    "description": "簡単なワード2",
+    "words": [
+      {
+        "word": "sea",
+        "ja": "うみ"
       },
       {
         "word": "surfing",
@@ -30,23 +60,6 @@
         "word": "boat",
         "ja": "船⛵"
       },
-      {
-        "word": "squid",
-        "ja": "イカ"
-      },
-      {
-        "word": "shellfish",
-        "ja": "貝"
-      },
-      {
-        "word": "shrimp",
-        "ja": "エビ"
-      }
-    ]
-  },
-  "lesson002": {
-    "description": "簡単なワード2",
-    "words": [
       {
         "word": "good morning",
         "ja": "おはよう"
