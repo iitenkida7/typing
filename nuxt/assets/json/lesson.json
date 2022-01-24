@@ -40,8 +40,53 @@
       }
     ]
   },
-  
   "lesson002": {
+    "description": "動物",
+    "words": [
+      {
+        "word": "lion",
+        "ja": "ライオン"
+      },
+      {
+        "word": "horse",
+        "ja": "うま"
+      },
+      {
+        "word": "sheep",
+        "ja": "ひつじ"
+      },
+      {
+        "word": "cat",
+        "ja": "ねこ"
+      },
+      {
+        "word": "dog",
+        "ja": "いぬ"
+      },
+      {
+        "word": "rabbit",
+        "ja": "うさぎ"
+      },
+      {
+        "word": "elephant",
+        "ja": "ぞう"
+      },
+      {
+        "word": "bear",
+        "ja": "くま"
+      },
+      {
+        "word": "monkey",
+        "ja": "さる"
+      },
+      {
+        "word": "panda",
+        "ja": "パンダ"
+      }
+    ]
+  },
+  
+  "lesson003": {
     "description": "簡単なワード2",
     "words": [
       {
