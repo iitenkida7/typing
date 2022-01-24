@@ -1,6 +1,6 @@
 <template>
   <div>
-{{  $route.params.id }}
+    {{ $route.params.id }}
     <div v-if="isStarted && !completed">
       <Word
         :ja="target.ja"
@@ -9,10 +9,18 @@
         :targetChr="targetChr"
       />
       <div class="has-text-centered">
+        <button class="button is-primary" v-on:click="speech(target.word)">
+          再生
+        </button>
+      </div>
+
+      <div class="has-text-centered">
         <canvas ref="target"></canvas>
       </div>
       <div class="has-text-centered">
-        <p class="button is-black is-size-1">{{ targetChr.replace(" ", "␣").toUpperCase()  }}</p>
+        <p class="button is-black is-size-1">
+          {{ targetChr.replace(" ", "␣").toUpperCase() }}
+        </p>
       </div>
       <div class="has-text-centered">
         <input
@@ -29,7 +37,7 @@
           @keyup="keyPress"
         />
       </div>
-      <Keyboard :targetChr="targetChr.toUpperCase()"/>
+      <Keyboard :targetChr="targetChr.toUpperCase()" />
       <Images class="mt-6" :word="target.word" />
     </div>
     <div v-if="!isStarted" class="has-text-centered">
@@ -71,13 +79,8 @@ export default {
     };
   },
   created: function () {
-    
-    console.log(Lesson);
-    console.log();
     const lessonData = Lesson[this.$route.params.id];
-    this.TypingData =lessonData.words.sort(() => Math.random() - 0.5);
-
-//    console.log()
+    this.TypingData = lessonData.words.sort(() => Math.random() - 0.5);
     window.speechSynthesis.getVoices(); // dummy call.
   },
 
