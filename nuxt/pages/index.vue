@@ -1,7 +1,9 @@
 <template>
   <ul>
     <li v-for="lesson in lessons" :key="lesson">
-      <NuxtLink to="/lesson">{{ lesson }}</NuxtLink>
+      <NuxtLink :to="/lesson/ + lesson" >
+        {{ lesson }}
+      </NuxtLink>
     </li>
   </ul>
 </template>

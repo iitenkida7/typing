@@ -17,7 +17,7 @@
           <a class="navbar-link"> Docs </a>
           <div class="navbar-dropdown is-boxed">
             <div v-for="lesson in lessons" :key="lesson">
-              <NuxtLink class="navbar-item" to="/lesson">{{ lesson }}</NuxtLink>
+              <NuxtLink class="navbar-item" :to="/lesson/ + lesson">{{ lesson }}</NuxtLink>
             </div>
           </div>
         </div>

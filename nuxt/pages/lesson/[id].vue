@@ -1,5 +1,6 @@
 <template>
   <div>
+{{  $route.params.id }}
     <div v-if="isStarted && !completed">
       <Word
         :ja="target.ja"
@@ -50,7 +51,7 @@
 import Lesson from "@/assets/json/lesson.json";
 import * as confetti from "canvas-confetti";
 export default {
-  name: "index",
+  name: "lesson-id",
   data: function () {
     return {
       isStarted: false,
@@ -70,9 +71,16 @@ export default {
     };
   },
   created: function () {
-    this.TypingData = Lesson.lesson001.words.sort(() => Math.random() - 0.5);
+    
+    console.log(Lesson);
+    console.log();
+    const lessonData = Lesson[this.$route.params.id];
+    this.TypingData =lessonData.words.sort(() => Math.random() - 0.5);
+
+//    console.log()
     window.speechSynthesis.getVoices(); // dummy call.
   },
+
   methods: {
     start() {
       this.isStarted = true;
