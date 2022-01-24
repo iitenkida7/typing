@@ -28,6 +28,7 @@
           @keyup="keyPress"
         />
       </div>
+      <Keyboard :targetChr="targetChr.toUpperCase()"/>
       <Images class="mt-6" :word="target.word" />
     </div>
     <div v-if="!isStarted" class="has-text-centered">
@@ -41,7 +42,6 @@
         Retry
       </button>
     </div>
-    <Keyboard :targetChr="targetChr.toUpperCase()"/>
     <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
 </template>
