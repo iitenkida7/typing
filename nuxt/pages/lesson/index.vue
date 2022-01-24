@@ -41,7 +41,7 @@
         Retry
       </button>
     </div>
-    <Keyboard />
+    <Keyboard :targetChr="targetChr.toUpperCase()"/>
     <Debug :pressKey="pressKey" :keyCode="keyCode" :missCnt="missCnt" />
   </div>
 </template>
