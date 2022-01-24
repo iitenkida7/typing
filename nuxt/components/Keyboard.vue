@@ -32,7 +32,7 @@
       <p :class="['button','is-size-2','m-1', { 'is-black': targetChr !== 'B' },{ 'is-danger': targetChr === 'B' },]">B</p>
       <p :class="['button','is-size-2','m-1', { 'is-black': targetChr !== 'N' },{ 'is-danger': targetChr === 'N' },]">N</p>
       <p :class="['button','is-size-2','m-1', { 'is-black': targetChr !== 'M' },{ 'is-danger': targetChr === 'M' },]">M</p>
-      <p :class="['button','is-size-2','m-1', { 'is-black': targetChr !== ',' },{ 'is-danger': targetChr === ','},]">,</p>
+      <p :class="['button','is-size-2','m-1', { 'is-black': targetChr !== ',' },{ 'is-danger': targetChr === ',' },]">,</p>
       <p :class="['button','is-size-2','m-1', { 'is-black': targetChr !== '.' },{ 'is-danger': targetChr === '.' },]">.</p>
     </div>
   </div>
