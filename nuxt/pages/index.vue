@@ -1,16 +1,16 @@
 <template>
   <ul>
     <li v-for="lesson in lessons" :key="lesson">
-      <NuxtLink :to="/lesson/ + lesson" >
+      <NuxtLink :to="/lesson/ + lesson">
         {{ lesson }}
       </NuxtLink>
     </li>
   </ul>
 </template>
-
-<script>
+<script setup>
 import Lesson from "@/assets/json/lesson.json";
-
+</script>
+<script>
 export default {
   name: "lesson",
   data: function () {
