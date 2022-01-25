@@ -55,9 +55,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Lesson from "@/assets/json/lesson.json";
 import * as confetti from "canvas-confetti";
+</script>
+<script>
 export default {
   name: "lesson-id",
   data: function () {
