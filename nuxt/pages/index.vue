@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li v-for="lesson in lessons" :key="lesson">
-      <NuxtLink :to="/lesson/ + lesson" >
-        {{ lesson }}
+    <li v-for="(lesson, index) in lessons">
+      <NuxtLink :to="/lesson/ + index">
+        {{ index }} / {{ lesson.description }}
       </NuxtLink>
     </li>
   </ul>
@@ -15,11 +15,8 @@ export default {
   name: "lesson",
   data: function () {
     return {
-      lessons: null,
+      lessons: Lesson,
     };
-  },
-  created: function () {
-    this.lessons = Object.keys(Lesson);
   },
 };
 </script>
