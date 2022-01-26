@@ -89,6 +89,11 @@ export default {
   created: function () {
     window.speechSynthesis.getVoices(); // dummy call.
   },
+  watch: {
+    $route: function (to, from) {
+      Object.assign(this.$data, initialState());
+    },
+  },
   methods: {
     start() {
       const lessonData = lodash.cloneDeep(Lesson[this.$route.params.id]);
