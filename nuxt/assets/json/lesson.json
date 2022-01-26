@@ -1,4 +1,21 @@
 {
+  "lesson000": {
+    "description": "ABC",
+    "words": [
+      {
+        "word": "A",
+        "ja": "A"
+      },
+      {
+        "word": "B",
+        "ja": "B"
+      },
+      {
+        "word": "C",
+        "ja": "C"
+      }
+    ]
+  },
   "lesson001": {
     "description": "海の生き物",
     "words": [

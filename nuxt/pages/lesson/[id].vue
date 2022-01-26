@@ -58,39 +58,53 @@
 <script setup>
 import Lesson from "@/assets/json/lesson.json";
 import * as confetti from "canvas-confetti";
+import lodash from "lodash";
 </script>
 <script>
+function initialState() {
+  return {
+    isStarted: false,
+    inputText: "",
+    target: {
+      word: "",
+      ja: "",
+    },
+    remains: "",
+    targetChr: "",
+    completed: false,
+    missCnt: 0,
+    pressKey: "",
+    keyCode: "",
+    isMatch: null,
+    isMiss: null,
+    TypingData: null,
+  };
+}
+
 export default {
   name: "lesson-id",
   data: function () {
-    return {
-      isStarted: false,
-      inputText: "",
-      target: {
-        word: "",
-        ja: "",
-      },
-      remains: "",
-      targetChr: "",
-      completed: false,
-      missCnt: 0,
-      pressKey: "",
-      keyCode: "",
-      isMatch: null,
-      isMiss: null,
-    };
+    return initialState();
   },
   created: function () {
-    const lessonData = Lesson[this.$route.params.id];
-    this.TypingData = lessonData.words.sort(() => Math.random() - 0.5);
     window.speechSynthesis.getVoices(); // dummy call.
   },
-
   methods: {
     start() {
+      const lessonData = lodash.cloneDeep(Lesson[this.$route.params.id]);
+      this.TypingData = lessonData.words.sort(() => Math.random() - 0.5);
       this.isStarted = true;
       this.nextWord();
       this.speech(this.target.word);
+    },
+    nextWord() {
+      this.target = this.TypingData.shift();
+      this.remains = this.target.word;
+      this.targetChr = this.remains.substr(0, 1);
+    },
+    retry() {
+      Object.assign(this.$data, initialState());
+      this.start();
     },
     keyPress(event) {
       if (this.checkChr(this.targetChr, event.key)) {
@@ -125,14 +139,6 @@ export default {
         return true;
       }
       return false;
-    },
-    nextWord() {
-      this.target = this.TypingData.shift();
-      this.remains = this.target.word;
-      this.targetChr = this.remains.substr(0, 1);
-    },
-    retry() {
-      window.location.reload();
     },
     speech(text) {
       const utter = new SpeechSynthesisUtterance();
