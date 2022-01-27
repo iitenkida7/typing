@@ -38,7 +38,7 @@
         />
       </div>
       <Keyboard :targetChr="targetChr.toUpperCase()" />
-      <Images class="mt-6" :word="target.word" />
+      <Images class="mt-6" :typingData="typingData" :word="target.word" />
     </div>
     <div v-if="!isStarted" class="has-text-centered">
       <button v-on:click="start" class="button is-primary is-large">
@@ -77,7 +77,7 @@ function initialState() {
     keyCode: "",
     isMatch: null,
     isMiss: null,
-    TypingData: null,
+    typingData: null,
   };
 }
 
@@ -97,13 +97,13 @@ export default {
   methods: {
     start() {
       const lessonData = lodash.cloneDeep(Lesson[this.$route.params.id]);
-      this.TypingData = lessonData.words.sort(() => Math.random() - 0.5);
+      this.typingData = lessonData.words.sort(() => Math.random() - 0.5);
       this.isStarted = true;
       this.nextWord();
       this.speech(this.target.word);
     },
     nextWord() {
-      this.target = this.TypingData.shift();
+      this.target = this.typingData.shift();
       this.remains = this.target.word;
       this.targetChr = this.remains.substr(0, 1);
     },
@@ -127,7 +127,7 @@ export default {
         this.playBeep();
       }
       if (this.remains.length === 0) {
-        if (this.TypingData.length > 0) {
+        if (this.typingData.length > 0) {
           this.inputText = "";
           this.nextWord();
           this.speech(this.target.word);
