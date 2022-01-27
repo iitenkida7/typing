@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(lesson, index) in lessons">
+    <li v-for="(lesson, index) in lessons" :key="index">
       <NuxtLink :to="/lesson/ + index">
         {{ index }} / {{ lesson.description }}
       </NuxtLink>
