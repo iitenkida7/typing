@@ -1,27 +1,31 @@
 <template>
   <div class="columns">
-    <div class="column" v-for="photo in photos" :key="photo.item">
+    <!--     <div class="column" v-for="photo in photos" :key="photo.item">
       <img :src="photo.url_s" />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
   name: "Images",
-  props: ["word"],
+  props: ["word", "typingData"],
   data: function () {
     return {
       photos: null,
     };
   },
   mounted: function () {
-    this.getImage(this.word);
+    this.typingData.forEach(function (value) {
+      console.log(value);
+      this.photos[value.word] = this.getImage(value.word);
+    });
   },
   watch: {
     word: function (word, oldWord) {
-      this.getImage(word);
+     // this.getImage(word);
     },
   },
   methods: {
