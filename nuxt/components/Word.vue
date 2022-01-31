@@ -1,13 +1,10 @@
 <template>
   <div>
     <div class="has-text-centered">
-      <p class="is-size-2">{{ ja }}</p>
+      <p class="is-size-2">{{ ja }} / {{ word }}</p>
     </div>
     <div class="has-text-centered">
-      <p class="is-size-1">{{ word }}</p>
-    </div>
-    <div class="has-text-centered">
-      {{ remains.replace(" ", "␣") }}
+      <p class="is-size-1">{{ remains.replace(" ", "␣") }}</p>
     </div>
   </div>
 </template>

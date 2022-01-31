@@ -2,43 +2,29 @@
   <div>
     {{ $route.params.id }}
     <div v-if="isStarted && !completed">
+      <div class="has-text-centered">
+        <canvas ref="target"></canvas>
+      </div>
+      <!--
+      <div class="has-text-centered">
+        <p class="button is-black is-size-1">
+          {{ targetChr.replace(" ", "␣").toUpperCase() }}
+        </p>
+      </div>
+      -->
       <Word
         :ja="target.ja"
         :remains="remains"
         :word="target.word"
         :targetChr="targetChr"
       />
+      <Keyboard :targetChr="targetChr.toUpperCase()" />
+      <Images class="mt-6" :imageData="imageData" :word="target.word" />
       <div class="has-text-centered">
         <button class="button is-primary" v-on:click="speech(target.word)">
           再生
         </button>
       </div>
-
-      <div class="has-text-centered">
-        <canvas ref="target"></canvas>
-      </div>
-      <div class="has-text-centered">
-        <p class="button is-black is-size-1">
-          {{ targetChr.replace(" ", "␣").toUpperCase() }}
-        </p>
-      </div>
-      <div class="has-text-centered">
-        <input
-          :class="[
-            'input',
-            'is-large',
-            'has-text-centered',
-            { 'is-info': isMatch },
-            { 'is-danger': isMiss },
-          ]"
-          type="text"
-          autofocus
-          v-model="inputText"
-          @keyup="keyPress"
-        />
-      </div>
-      <Keyboard :targetChr="targetChr.toUpperCase()" />
-      <Images class="mt-6" :imageData="imageData" :word="target.word"/>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
       <button v-on:click="start" class="button is-primary is-large">
@@ -78,7 +64,7 @@ function initialState() {
     isMatch: null,
     isMiss: null,
     typingData: null,
-    imageData:null,
+    imageData: null,
   };
 }
 
@@ -96,6 +82,9 @@ export default {
       Object.assign(this.$data, initialState());
       this.imageData = lodash.cloneDeep(Lesson[this.$route.params.id]).words;
     },
+  },
+  mounted: function () {
+    document.addEventListener("keydown", this.keyPress);
   },
   methods: {
     start() {
