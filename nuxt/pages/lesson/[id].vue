@@ -38,7 +38,7 @@
         />
       </div>
       <Keyboard :targetChr="targetChr.toUpperCase()" />
-      <Images class="mt-6" :typingData="typingData" :word="target.word" />
+      <Images class="mt-6" :imageData="imageData" :word="target.word"/>
     </div>
     <div v-if="!isStarted" class="has-text-centered">
       <button v-on:click="start" class="button is-primary is-large">
@@ -78,6 +78,7 @@ function initialState() {
     isMatch: null,
     isMiss: null,
     typingData: null,
+    imageData:null,
   };
 }
 
@@ -88,10 +89,12 @@ export default {
   },
   created: function () {
     window.speechSynthesis.getVoices(); // dummy call.
+    this.imageData = lodash.cloneDeep(Lesson[this.$route.params.id]).words;
   },
   watch: {
     $route: function (to, from) {
       Object.assign(this.$data, initialState());
+      this.imageData = lodash.cloneDeep(Lesson[this.$route.params.id]).words;
     },
   },
   methods: {
@@ -109,6 +112,7 @@ export default {
     },
     retry() {
       Object.assign(this.$data, initialState());
+      this.imageData = lodash.cloneDeep(Lesson[this.$route.params.id]).words;
       this.start();
     },
     keyPress(event) {

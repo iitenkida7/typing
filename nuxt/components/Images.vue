@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column" v-for="photo in photos" :key="photo.item">
+    <div class="column" v-for="photo in photos[word]" :key="photo.item">
       <img :src="photo.url_s" />
     </div>
   </div>
@@ -8,21 +8,19 @@
 
 <script>
 import axios from "axios";
+
 export default {
   name: "Images",
-  props: ["word"],
+  props: ["word", "imageData"],
   data: function () {
     return {
-      photos: null,
+      photos: [],
     };
   },
   mounted: function () {
-    this.getImage(this.word);
-  },
-  watch: {
-    word: function (word, oldWord) {
-      this.getImage(word);
-    },
+    this.imageData.forEach((value, index) => {
+      this.getImage(value.word);
+    });
   },
   methods: {
     getImage(text) {
@@ -42,8 +40,7 @@ export default {
         }).toString();
       axios
         .get(flickrApiEndpoint)
-        .then((response) => (this.photos = response.data.photos.photo));
-      // @todo: not stylish!
+        .then((response) => (this.photos[text] = response.data.photos.photo));
     },
   },
 };
