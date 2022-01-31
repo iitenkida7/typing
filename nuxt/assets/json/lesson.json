@@ -1,22 +1,67 @@
 {
   "lesson000": {
-    "description": "ABC",
+    "description": "3char",
     "words": [
       {
-        "word": "A",
-        "ja": "A"
+        "word": "cat",
+        "ja": "ねこ"
       },
       {
-        "word": "B",
-        "ja": "B"
+        "word": "dog",
+        "ja": "いぬ"
       },
       {
-        "word": "C",
-        "ja": "C"
+        "word": "red",
+        "ja": "あか"
+      },
+      {
+        "word": "sea",
+        "ja": "うみ"
+      },
+      {
+        "word": "bed",
+        "ja": "ベッド"
+      },
+      {
+        "word": "pen",
+        "ja": "ペン"
       }
     ]
   },
   "lesson001": {
+    "description": "Colors",
+    "words": [
+      {
+        "word": "red",
+        "ja": "あか"
+      },
+      {
+        "word": "green",
+        "ja": "みどり"
+      },
+      {
+        "word": "blue",
+        "ja": "あお"
+      },
+      {
+        "word": "black",
+        "ja": "くろ"
+      },
+      {
+        "word": "yellow",
+        "ja": "きいろ"
+      },
+      {
+        "word": "orange",
+        "ja": "オレンジ"
+      },
+      {
+        "word": "purple",
+        "ja": "むらさき"
+      }
+    ]
+  },
+  "lesson002": {
     "description": "海の生き物",
     "words": [
       {
@@ -57,7 +102,7 @@
       }
     ]
   },
-  "lesson002": {
+  "lesson003": {
     "description": "動物",
     "words": [
       {
@@ -102,14 +147,42 @@
       }
     ]
   },
-  
-  "lesson003": {
-    "description": "簡単なワード2",
+  "lesson004": {
+    "description": "Foods",
     "words": [
       {
-        "word": "sea",
-        "ja": "うみ"
+        "word": "bread",
+        "ja": "パン"
       },
+      {
+        "word": "soup",
+        "ja": "スープ"
+      },
+      {
+        "word": "rice",
+        "ja": "ごはん"
+      },
+      {
+        "word": "pizza",
+        "ja": "ピザ"
+      },
+      {
+        "word": "pasta",
+        "ja": "パスタ"
+      },
+      {
+        "word": "hamburger",
+        "ja": "ハンバーガー"
+      },
+      {
+        "word": "sausage",
+        "ja": "ソーセージ"
+      }
+    ]
+  },
+  "lesson005": {
+    "description": "簡単なワード2",
+    "words": [
       {
         "word": "surfing",
         "ja": "サーフィン🏄"
@@ -151,10 +224,6 @@
         "ja": "ピアノ"
       },
       {
-        "word": "hamburger",
-        "ja": "ハンバーガー"
-      },
-      {
         "word": "mcdonald",
         "ja": "マクドナルド"
       },
@@ -165,10 +234,6 @@
       {
         "word": "shoes",
         "ja": "くつ"
-      },
-      {
-        "word": "green",
-        "ja": "みどり"
       },
       {
         "word": "sea",
