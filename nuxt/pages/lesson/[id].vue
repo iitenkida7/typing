@@ -2,24 +2,13 @@
   <div>
     {{ $route.params.id }}
     <div v-if="isStarted && !completed">
+      <Word :ja="target.ja" :word="target.word" />
+      <Images class="mt-6" :imageData="imageData" :word="target.word" />
       <div class="has-text-centered">
         <canvas ref="target"></canvas>
       </div>
-      <!--
-      <div class="has-text-centered">
-        <p class="button is-black is-size-1">
-          {{ targetChr.replace(" ", "␣").toUpperCase() }}
-        </p>
-      </div>
-      -->
-      <Word
-        :ja="target.ja"
-        :remains="remains"
-        :word="target.word"
-        :targetChr="targetChr"
-      />
+      <Char :remains="remains" :targetChr="targetChr" />
       <Keyboard :targetChr="targetChr.toUpperCase()" />
-      <Images class="mt-6" :imageData="imageData" :word="target.word" />
       <div class="has-text-centered">
         <button class="button is-primary" v-on:click="speech(target.word)">
           再生
@@ -150,7 +139,7 @@ export default {
         shapes: ["square"],
         particleCount: 20,
         spread: 120,
-        //zIndex: 999,
+        //zIndex: -1,
         origin: {
           y: 1,
           x: 0.5,
