@@ -6,11 +6,14 @@ route = ""
 zone_id = ""
 
 [site]
-bucket = ".output/public"
-entry-point = ".output"
+bucket = "./.output/public"
+entry-point = "./.output"
 
 [build]
-command = "NITRO_PRESET=cloudflare yarn run build"
+# See: https://github.com/nuxt/framework/issues/1239
+#command = "NITRO_PRESET=cloudflare yarn run build"
+command = "true"
+upload.format = "service-worker"
 
-[build.upload]
-format = "service-worker"
+#[build.upload]
+#format = "service-worker"

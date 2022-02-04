@@ -18,6 +18,5 @@ yarn-update:
 logs:
 	docker-compose logs -f
 
-deloy:
-	cd nuxt 
-	yarn run deploy
+deploy:
+	cd nuxt && yarn run deploy
