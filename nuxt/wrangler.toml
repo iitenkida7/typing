@@ -1,6 +1,6 @@
 name = "typing"
 type = "javascript"
-account_id = "f5f85f189b647655693c87ea0f31630a"
+#account_id = "f5f85f189b647655693c87ea0f31630a"
 workers_dev = true
 route = ""
 zone_id = ""
