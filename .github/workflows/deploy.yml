@@ -37,7 +37,7 @@ jobs:
         run: yarn
         working-directory: nuxt
 
-      #- name: Install
+      ##- name: Install
       #  run: yarn install
       #  working-directory: nuxt
 
