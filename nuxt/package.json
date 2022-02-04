@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "deploy": "NITRO_PRESET=cloudflare wrangler publish",
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs"
