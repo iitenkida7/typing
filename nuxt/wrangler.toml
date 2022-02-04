@@ -1,6 +1,5 @@
 name = "typing"
 type = "javascript"
-#account_id = "f5f85f189b647655693c87ea0f31630a"
 workers_dev = true
 route = ""
 zone_id = ""
@@ -14,6 +13,3 @@ entry-point = "./.output"
 #command = "NITRO_PRESET=cloudflare yarn run build"
 command = "true"
 upload.format = "service-worker"
-
-#[build.upload]
-#format = "service-worker"
