@@ -17,7 +17,7 @@ jobs:
           node-version: '16'
       - uses: actions/checkout@v2
       - name: yarn install
-        run: yarn install
+        run: node --version && yarn install
         working-directory: nuxt
 #      - name: Setup tmate session
 #        uses: mxschmitt/action-tmate@v1
