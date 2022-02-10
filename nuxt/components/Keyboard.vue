@@ -35,6 +35,9 @@
       <p :class="['button','is-size-4','m-1', { 'is-black': targetChr !== ',' },{ 'is-danger': targetChr === ',' },]">,</p>
       <p :class="['button','is-size-4','m-1', { 'is-black': targetChr !== '.' },{ 'is-danger': targetChr === '.' },]">.</p>
     </div>
+    <div class="has-text-centered">
+      <p :class="['button','is-size-4','m-1', { 'is-black': targetChr !== ' ' },{ 'is-danger': targetChr === ' ' },]">SPACE</p>
+    </div>
   </div>
 </template>
 <script>
