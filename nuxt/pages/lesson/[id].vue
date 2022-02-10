@@ -94,6 +94,9 @@ export default {
       this.start();
     },
     keyPress(event) {
+      if(!this.isStarted || this.isCompleted){
+        return;
+      }
       if (this.checkChr(this.targetChr, event.key)) {
         this.remains = this.remains.substr(1);
         this.targetChr = this.remains.substr(0, 1);
