@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ $route.params.id }}
-    <div v-if="isStarted && !completed">
+    <div v-if="isStarted && !isCompleted">
       <Word :ja="target.ja" :word="target.word" />
       <Images class="mt-6" :imageData="imageData" :word="target.word" />
       <div class="has-text-centered">
@@ -20,7 +20,7 @@
         Start
       </button>
     </div>
-    <div v-if="completed" class="has-text-centered">
+    <div v-if="isCompleted" class="has-text-centered">
       <p class="has-text-info">Completed!＼(^o^)／</p>
       <button class="button is-primary is-large" v-on:click="retry">
         Retry
@@ -46,7 +46,7 @@ function initialState() {
     },
     remains: "",
     targetChr: "",
-    completed: false,
+    isCompleted: false,
     missCnt: 0,
     pressKey: "",
     keyCode: "",
@@ -114,7 +114,7 @@ export default {
           this.nextWord();
           this.speech(this.target.word);
         } else {
-          this.completed = true;
+          this.isCompleted = true;
         }
       }
 
