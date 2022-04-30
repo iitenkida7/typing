@@ -1,18 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "deploy": "NITRO_PRESET=cloudflare wrangler publish",
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt3": "3.0.0-27434337.d6102de"
+    "nuxt": "npm:nuxt3@latest"
   },
   "dependencies": {
-    "axios": "^0.26.0",
+    "axios": "^0.27.2",
     "bulma": "^0.9.3",
     "canvas-confetti": "^1.5.1",
-    "sass": "^1.49.9"
+    "sass": "^1.51.0"
   }
 }
