@@ -1,10 +1,11 @@
 version: '2.0'
 services:
   node:
-    build: ./docker/node
+    image: node:lts-alpine
     ports:
       - '3000:3000'
       - '24678:24678'
     volumes:
       - ./nuxt:/nuxt:cached
+    working_dir: /nuxt
     user: 1000:1000

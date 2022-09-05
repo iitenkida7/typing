@@ -1,5 +1,5 @@
 run-watch:
-	docker-compose run --rm --service-ports node npm run dev
+	docker-compose run --rm --service-ports node yarn run dev
 
 restart: 
 	@make down
