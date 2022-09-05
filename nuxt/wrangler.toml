@@ -10,6 +10,6 @@ entry-point = "./.output"
 
 [build]
 # See: https://github.com/nuxt/framework/issues/1239
-command = "NITRO_PRESET=cloudflare yarn run generate"
-#command = "true"
+#command = "NITRO_PRESET=cloudflare yarn run build"
+command = "true"
 upload.format = "service-worker"
