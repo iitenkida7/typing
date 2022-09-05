@@ -1,3 +1,6 @@
+run-watch:
+	docker-compose run --rm --service-ports node npm run dev
+
 restart: 
 	@make down
 	@make up
