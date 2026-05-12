@@ -1,7 +1,5 @@
-FROM node:lts-alpine
+FROM oven/bun:latest
 
-RUN apk --no-cache add git xdg-utils
-
-WORKDIR /nuxt
-EXPOSE 3000
-CMD ["yarn", "dev", "-o"]
+WORKDIR /app
+EXPOSE 5173
+CMD ["bun", "run", "dev", "--host"]
