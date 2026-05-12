@@ -1,18 +1,23 @@
 /// <reference types="@cloudflare/workers-types" />
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/cloudflare-workers'
-import manifest from '__STATIC_CONTENT_MANIFEST'
 
 type Env = {
-  __STATIC_CONTENT: KVNamespace
+  ASSETS: Fetcher
 }
 
 const app = new Hono<{ Bindings: Env }>()
 
-// Serve static files
-app.get('*', serveStatic({ root: '/', manifest }))
+// Future API routes can be added here
+// app.get('/api/...', ...)
 
-// SPA fallback: serve index.html for client-side routing
-app.get('*', serveStatic({ path: '/index.html', manifest }))
+// Serve static assets, fallback to index.html for SPA routing
+app.get('*', async (c) => {
+  const response = await c.env.ASSETS.fetch(c.req.raw)
+  if (response.status === 404) {
+    const indexUrl = new URL('/index.html', c.req.url)
+    return c.env.ASSETS.fetch(new Request(indexUrl.toString()))
+  }
+  return response
+})
 
 export default app

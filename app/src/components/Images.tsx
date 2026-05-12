@@ -36,7 +36,6 @@ export default function Images({ word, imageData }: { word: string; imageData: L
     try {
       const response = await axios.get(`https://api.flickr.com/services/rest/?${params}`)
       const fetched: FlickrPhoto[] = response.data.photos.photo
-      // Preload image files into browser cache
       fetched.forEach((photo) => {
         if (photo.url_s) {
           const img = new Image()
@@ -50,9 +49,9 @@ export default function Images({ word, imageData }: { word: string; imageData: L
   }
 
   return (
-    <div className="grid grid-cols-4 gap-3 mt-6">
+    <div className="grid grid-cols-2 gap-1 w-full aspect-square">
       {(photos[word] ?? []).map((photo, i) => (
-        <div key={i} className="aspect-square overflow-hidden rounded-lg">
+        <div key={i} className="overflow-hidden rounded-lg">
           <img src={photo.url_s} alt={word} className="w-full h-full object-cover" />
         </div>
       ))}
