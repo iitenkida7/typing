@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import confetti from 'canvas-confetti'
 import lessonData from '../data/lesson.json'
 import Word from '../components/Word'
@@ -15,9 +15,15 @@ interface LessonWord {
 
 type LessonDataType = typeof lessonData
 
+const LESSON_KEYS = Object.keys(lessonData)
+
 export default function Lesson() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  const currentIndex = LESSON_KEYS.indexOf(id ?? '')
+  const nextLessonId = LESSON_KEYS[currentIndex + 1] ?? null
 
   const [isStarted, setIsStarted] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
@@ -35,6 +41,16 @@ export default function Lesson() {
   const typingDataRef = useRef<LessonWord[]>([])
   const isStartedRef = useRef(false)
   const isCompletedRef = useRef(false)
+
+  // Preload voices (async in most browsers)
+  useEffect(() => {
+    const load = () => window.speechSynthesis.getVoices()
+    load()
+    window.speechSynthesis.onvoiceschanged = load
+    return () => {
+      window.speechSynthesis.onvoiceschanged = null
+    }
+  }, [])
 
   // Reset when lesson id changes
   useEffect(() => {
@@ -58,13 +74,20 @@ export default function Lesson() {
     isCompletedRef.current = false
     remainsRef.current = ''
     targetChrRef.current = ''
-
-    window.speechSynthesis.getVoices() // dummy call for initialization
   }, [id])
 
   const speech = (text: string) => {
+    const voices = window.speechSynthesis.getVoices()
+    const enVoices = voices.filter((v) => v.lang.startsWith('en'))
+    const voice =
+      enVoices.find((v) => v.name === 'Victoria') ??
+      enVoices.find((v) => v.name === 'Samantha') ??
+      enVoices.find((v) => v.lang === 'en-US') ??
+      enVoices[0] ??
+      null
     const utter = new SpeechSynthesisUtterance()
-    utter.voice = window.speechSynthesis.getVoices()[41]
+    utter.lang = 'en-US'
+    if (voice) utter.voice = voice
     utter.rate = 0.75
     utter.text = text
     window.speechSynthesis.speak(utter)
@@ -207,13 +230,23 @@ export default function Lesson() {
 
       {isCompleted && (
         <div className="text-center mt-16">
-          <p className="text-blue-500 text-3xl mb-6">Completed! ＼(^o^)／</p>
-          <button
-            className="bg-blue-500 hover:bg-blue-600 text-white text-2xl px-12 py-4 rounded-lg"
-            onClick={retry}
-          >
-            Retry
-          </button>
+          <p className="text-blue-500 text-3xl mb-8">Completed! ＼(^o^)／</p>
+          <div className="flex justify-center gap-4">
+            <button
+              className="bg-gray-500 hover:bg-gray-600 text-white text-xl px-10 py-4 rounded-lg"
+              onClick={retry}
+            >
+              Retry
+            </button>
+            {nextLessonId && (
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white text-xl px-10 py-4 rounded-lg"
+                onClick={() => navigate(`/lesson/${nextLessonId}`)}
+              >
+                次のレッスン →
+              </button>
+            )}
+          </div>
         </div>
       )}
 
