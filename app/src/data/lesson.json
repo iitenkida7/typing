@@ -1,6 +1,6 @@
 {
   "lesson000": {
-    "description": "3char",
+    "description": "3文字ワード",
     "words": [
       {
         "word": "cat",
@@ -29,7 +29,7 @@
     ]
   },
   "lesson001": {
-    "description": "Colors",
+    "description": "色",
     "words": [
       {
         "word": "red",
@@ -148,7 +148,7 @@
     ]
   },
   "lesson004": {
-    "description": "Foods",
+    "description": "食べ物",
     "words": [
       {
         "word": "bread",
@@ -181,11 +181,11 @@
     ]
   },
   "lesson005": {
-    "description": "簡単なワード2",
+    "description": "かんたんワード",
     "words": [
       {
         "word": "surfing",
-        "ja": "サーフィン🏄"
+        "ja": "サーフィン"
       },
       {
         "word": "beach",
@@ -193,19 +193,7 @@
       },
       {
         "word": "boat",
-        "ja": "船⛵"
-      },
-      {
-        "word": "good morning",
-        "ja": "おはよう"
-      },
-      {
-        "word": "Hello",
-        "ja": "こんにちは"
-      },
-      {
-        "word": "bed",
-        "ja": "ベット"
+        "ja": "ふね"
       },
       {
         "word": "box",
@@ -216,20 +204,8 @@
         "ja": "おとこのこ"
       },
       {
-        "word": "starbucks",
-        "ja": "スターバックス"
-      },
-      {
         "word": "piano",
         "ja": "ピアノ"
-      },
-      {
-        "word": "mcdonald",
-        "ja": "マクドナルド"
-      },
-      {
-        "word": "aircraft",
-        "ja": "ひこうき"
       },
       {
         "word": "shoes",
@@ -238,6 +214,536 @@
       {
         "word": "sea",
         "ja": "うみ"
+      }
+    ]
+  },
+  "lesson006": {
+    "description": "野菜",
+    "words": [
+      {
+        "word": "tomato",
+        "ja": "トマト"
+      },
+      {
+        "word": "carrot",
+        "ja": "にんじん"
+      },
+      {
+        "word": "onion",
+        "ja": "たまねぎ"
+      },
+      {
+        "word": "potato",
+        "ja": "じゃがいも"
+      },
+      {
+        "word": "cucumber",
+        "ja": "きゅうり"
+      },
+      {
+        "word": "cabbage",
+        "ja": "キャベツ"
+      },
+      {
+        "word": "broccoli",
+        "ja": "ブロッコリー"
+      },
+      {
+        "word": "spinach",
+        "ja": "ほうれんそう"
+      }
+    ]
+  },
+  "lesson007": {
+    "description": "果物",
+    "words": [
+      {
+        "word": "apple",
+        "ja": "りんご"
+      },
+      {
+        "word": "banana",
+        "ja": "バナナ"
+      },
+      {
+        "word": "orange",
+        "ja": "オレンジ"
+      },
+      {
+        "word": "grape",
+        "ja": "ぶどう"
+      },
+      {
+        "word": "strawberry",
+        "ja": "いちご"
+      },
+      {
+        "word": "watermelon",
+        "ja": "すいか"
+      },
+      {
+        "word": "peach",
+        "ja": "もも"
+      },
+      {
+        "word": "lemon",
+        "ja": "レモン"
+      }
+    ]
+  },
+  "lesson008": {
+    "description": "乗り物",
+    "words": [
+      {
+        "word": "car",
+        "ja": "くるま"
+      },
+      {
+        "word": "bus",
+        "ja": "バス"
+      },
+      {
+        "word": "train",
+        "ja": "でんしゃ"
+      },
+      {
+        "word": "bicycle",
+        "ja": "じてんしゃ"
+      },
+      {
+        "word": "airplane",
+        "ja": "ひこうき"
+      },
+      {
+        "word": "ship",
+        "ja": "ふね"
+      },
+      {
+        "word": "truck",
+        "ja": "トラック"
+      },
+      {
+        "word": "rocket",
+        "ja": "ロケット"
+      }
+    ]
+  },
+  "lesson009": {
+    "description": "体",
+    "words": [
+      {
+        "word": "head",
+        "ja": "あたま"
+      },
+      {
+        "word": "eye",
+        "ja": "め"
+      },
+      {
+        "word": "ear",
+        "ja": "みみ"
+      },
+      {
+        "word": "nose",
+        "ja": "はな"
+      },
+      {
+        "word": "mouth",
+        "ja": "くち"
+      },
+      {
+        "word": "hand",
+        "ja": "て"
+      },
+      {
+        "word": "foot",
+        "ja": "あし"
+      },
+      {
+        "word": "shoulder",
+        "ja": "かた"
+      }
+    ]
+  },
+  "lesson010": {
+    "description": "家・部屋",
+    "words": [
+      {
+        "word": "room",
+        "ja": "へや"
+      },
+      {
+        "word": "door",
+        "ja": "ドア"
+      },
+      {
+        "word": "window",
+        "ja": "まど"
+      },
+      {
+        "word": "table",
+        "ja": "テーブル"
+      },
+      {
+        "word": "chair",
+        "ja": "いす"
+      },
+      {
+        "word": "bed",
+        "ja": "ベッド"
+      },
+      {
+        "word": "sofa",
+        "ja": "ソファ"
+      },
+      {
+        "word": "kitchen",
+        "ja": "だいどころ"
+      }
+    ]
+  },
+  "lesson011": {
+    "description": "学校",
+    "words": [
+      {
+        "word": "school",
+        "ja": "がっこう"
+      },
+      {
+        "word": "book",
+        "ja": "ほん"
+      },
+      {
+        "word": "pencil",
+        "ja": "えんぴつ"
+      },
+      {
+        "word": "desk",
+        "ja": "つくえ"
+      },
+      {
+        "word": "teacher",
+        "ja": "せんせい"
+      },
+      {
+        "word": "student",
+        "ja": "せいと"
+      },
+      {
+        "word": "class",
+        "ja": "じゅぎょう"
+      },
+      {
+        "word": "eraser",
+        "ja": "けしごむ"
+      }
+    ]
+  },
+  "lesson012": {
+    "description": "天気",
+    "words": [
+      {
+        "word": "sunny",
+        "ja": "はれ"
+      },
+      {
+        "word": "cloudy",
+        "ja": "くもり"
+      },
+      {
+        "word": "rainy",
+        "ja": "あめ"
+      },
+      {
+        "word": "windy",
+        "ja": "かぜがつよい"
+      },
+      {
+        "word": "snowy",
+        "ja": "ゆき"
+      },
+      {
+        "word": "hot",
+        "ja": "あつい"
+      },
+      {
+        "word": "cold",
+        "ja": "さむい"
+      },
+      {
+        "word": "warm",
+        "ja": "あたたかい"
+      }
+    ]
+  },
+  "lesson013": {
+    "description": "スポーツ",
+    "words": [
+      {
+        "word": "soccer",
+        "ja": "サッカー"
+      },
+      {
+        "word": "tennis",
+        "ja": "テニス"
+      },
+      {
+        "word": "swimming",
+        "ja": "すいえい"
+      },
+      {
+        "word": "baseball",
+        "ja": "やきゅう"
+      },
+      {
+        "word": "basketball",
+        "ja": "バスケットボール"
+      },
+      {
+        "word": "volleyball",
+        "ja": "バレーボール"
+      },
+      {
+        "word": "golf",
+        "ja": "ゴルフ"
+      },
+      {
+        "word": "running",
+        "ja": "ランニング"
+      }
+    ]
+  },
+  "lesson014": {
+    "description": "職業",
+    "words": [
+      {
+        "word": "doctor",
+        "ja": "おいしゃさん"
+      },
+      {
+        "word": "teacher",
+        "ja": "せんせい"
+      },
+      {
+        "word": "pilot",
+        "ja": "パイロット"
+      },
+      {
+        "word": "chef",
+        "ja": "りょうりにん"
+      },
+      {
+        "word": "farmer",
+        "ja": "のうか"
+      },
+      {
+        "word": "artist",
+        "ja": "げいじゅつか"
+      },
+      {
+        "word": "singer",
+        "ja": "かしゅ"
+      },
+      {
+        "word": "nurse",
+        "ja": "かんごし"
+      }
+    ]
+  },
+  "lesson015": {
+    "description": "数字",
+    "words": [
+      {
+        "word": "one",
+        "ja": "いち"
+      },
+      {
+        "word": "two",
+        "ja": "に"
+      },
+      {
+        "word": "three",
+        "ja": "さん"
+      },
+      {
+        "word": "four",
+        "ja": "し"
+      },
+      {
+        "word": "five",
+        "ja": "ご"
+      },
+      {
+        "word": "six",
+        "ja": "ろく"
+      },
+      {
+        "word": "seven",
+        "ja": "なな"
+      },
+      {
+        "word": "eight",
+        "ja": "はち"
+      },
+      {
+        "word": "nine",
+        "ja": "きゅう"
+      },
+      {
+        "word": "ten",
+        "ja": "じゅう"
+      }
+    ]
+  },
+  "lesson016": {
+    "description": "あいさつ",
+    "words": [
+      {
+        "word": "hello",
+        "ja": "こんにちは"
+      },
+      {
+        "word": "goodbye",
+        "ja": "さようなら"
+      },
+      {
+        "word": "morning",
+        "ja": "おはよう"
+      },
+      {
+        "word": "night",
+        "ja": "おやすみ"
+      },
+      {
+        "word": "thanks",
+        "ja": "ありがとう"
+      },
+      {
+        "word": "sorry",
+        "ja": "ごめんなさい"
+      },
+      {
+        "word": "please",
+        "ja": "おねがい"
+      },
+      {
+        "word": "welcome",
+        "ja": "ようこそ"
+      }
+    ]
+  },
+  "lesson017": {
+    "description": "自然",
+    "words": [
+      {
+        "word": "mountain",
+        "ja": "やま"
+      },
+      {
+        "word": "river",
+        "ja": "かわ"
+      },
+      {
+        "word": "forest",
+        "ja": "もり"
+      },
+      {
+        "word": "flower",
+        "ja": "はな"
+      },
+      {
+        "word": "sky",
+        "ja": "そら"
+      },
+      {
+        "word": "cloud",
+        "ja": "くも"
+      },
+      {
+        "word": "sun",
+        "ja": "たいよう"
+      },
+      {
+        "word": "moon",
+        "ja": "つき"
+      },
+      {
+        "word": "star",
+        "ja": "ほし"
+      }
+    ]
+  },
+  "lesson018": {
+    "description": "昆虫",
+    "words": [
+      {
+        "word": "butterfly",
+        "ja": "ちょうちょ"
+      },
+      {
+        "word": "bee",
+        "ja": "はち"
+      },
+      {
+        "word": "ant",
+        "ja": "あり"
+      },
+      {
+        "word": "beetle",
+        "ja": "かぶとむし"
+      },
+      {
+        "word": "dragonfly",
+        "ja": "とんぼ"
+      },
+      {
+        "word": "grasshopper",
+        "ja": "バッタ"
+      },
+      {
+        "word": "ladybug",
+        "ja": "てんとうむし"
+      },
+      {
+        "word": "mosquito",
+        "ja": "か"
+      }
+    ]
+  },
+  "lesson019": {
+    "description": "国と都市",
+    "words": [
+      {
+        "word": "Japan",
+        "ja": "にほん"
+      },
+      {
+        "word": "America",
+        "ja": "アメリカ"
+      },
+      {
+        "word": "France",
+        "ja": "フランス"
+      },
+      {
+        "word": "Italy",
+        "ja": "イタリア"
+      },
+      {
+        "word": "China",
+        "ja": "ちゅうごく"
+      },
+      {
+        "word": "England",
+        "ja": "イギリス"
+      },
+      {
+        "word": "Australia",
+        "ja": "オーストラリア"
+      },
+      {
+        "word": "Canada",
+        "ja": "カナダ"
       }
     ]
   }

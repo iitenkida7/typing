@@ -35,7 +35,15 @@ export default function Images({ word, imageData }: { word: string; imageData: L
     })
     try {
       const response = await axios.get(`https://api.flickr.com/services/rest/?${params}`)
-      setPhotos((prev) => ({ ...prev, [text]: response.data.photos.photo }))
+      const fetched: FlickrPhoto[] = response.data.photos.photo
+      // Preload image files into browser cache
+      fetched.forEach((photo) => {
+        if (photo.url_s) {
+          const img = new Image()
+          img.src = photo.url_s
+        }
+      })
+      setPhotos((prev) => ({ ...prev, [text]: fetched }))
     } catch {
       // ignore
     }
