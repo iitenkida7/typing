@@ -1,25 +1,20 @@
-run-watch:
-	docker-compose run --rm --service-ports node yarn run dev
+dev:
+	docker-compose run --rm --service-ports bun bun run dev --host
 
-restart: 
-	@make down
-	@make up
+install:
+	docker-compose run --rm bun bun install
+
+build:
+	docker-compose run --rm bun bun run build
+
+deploy:
+	docker-compose run --rm bun sh -c "bun run build && wrangler deploy"
 
 up:
 	docker-compose up -d
-	@make logs
+
 down:
 	docker-compose down
 
-install:
-	docker-compose build
-	docker-compose run --rm node yarn install
-
-yarn-update:
-	docker-compose run --rm node yarn upgrade --latest
-
 logs:
 	docker-compose logs -f
-
-deploy:
-	cd nuxt && yarn run deploy

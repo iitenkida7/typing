@@ -1,11 +1,11 @@
-version: '2.0'
+version: '3'
 services:
-  node:
-    image: node:lts-alpine
+  bun:
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
     ports:
-      - '3000:3000'
-      - '24678:24678'
+      - '5173:5173'
     volumes:
-      - ./nuxt:/nuxt:cached
-    working_dir: /nuxt
-    user: 1000:1000
+      - ./app:/app:cached
+    working_dir: /app
