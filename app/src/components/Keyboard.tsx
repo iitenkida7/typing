@@ -14,17 +14,8 @@ export default function Keyboard({
   shakeKey: boolean
 }) {
   const getKeyClass = (key: string) => {
-    const isTarget = targetChr === key
-    const isPressed = lastPressedKey === key
-
-    if (isTarget) {
+    if (targetChr === key) {
       return 'bg-red-500 text-white border-red-700 animate-pulse shadow-[0_0_12px_rgba(239,68,68,0.6)]'
-    }
-    if (isPressed && shakeKey) {
-      return 'bg-yellow-500 text-white border-yellow-700 animate-[shake_0.3s_ease-in-out]'
-    }
-    if (isPressed && !shakeKey) {
-      return 'bg-green-500 text-white border-green-700 scale-95 transition-transform duration-100'
     }
     return 'bg-gray-800 text-white border-gray-600'
   }

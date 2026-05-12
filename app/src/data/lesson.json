@@ -1,6 +1,7 @@
 {
   "lesson000": {
     "description": "3文字ワード",
+    "emoji": "\uD83D\uDD24",
     "words": [
       {
         "word": "cat",
@@ -30,6 +31,7 @@
   },
   "lesson001": {
     "description": "色",
+    "emoji": "\uD83C\uDF08",
     "words": [
       {
         "word": "red",
@@ -63,6 +65,7 @@
   },
   "lesson002": {
     "description": "海の生き物",
+    "emoji": "\uD83C\uDF0A",
     "words": [
       {
         "word": "dolphin",
@@ -104,6 +107,7 @@
   },
   "lesson003": {
     "description": "動物",
+    "emoji": "\uD83E\uDD81",
     "words": [
       {
         "word": "lion",
@@ -149,6 +153,7 @@
   },
   "lesson004": {
     "description": "食べ物",
+    "emoji": "\uD83C\uDF54",
     "words": [
       {
         "word": "bread",
@@ -182,6 +187,7 @@
   },
   "lesson005": {
     "description": "かんたんワード",
+    "emoji": "\uD83C\uDFC4",
     "words": [
       {
         "word": "surfing",
@@ -219,6 +225,7 @@
   },
   "lesson006": {
     "description": "野菜",
+    "emoji": "\uD83E\uDD66",
     "words": [
       {
         "word": "tomato",
@@ -256,6 +263,7 @@
   },
   "lesson007": {
     "description": "果物",
+    "emoji": "\uD83C\uDF4E",
     "words": [
       {
         "word": "apple",
@@ -293,6 +301,7 @@
   },
   "lesson008": {
     "description": "乗り物",
+    "emoji": "\uD83D\uDE97",
     "words": [
       {
         "word": "car",
@@ -330,6 +339,7 @@
   },
   "lesson009": {
     "description": "体",
+    "emoji": "\uD83E\uDDD2",
     "words": [
       {
         "word": "head",
@@ -367,6 +377,7 @@
   },
   "lesson010": {
     "description": "家・部屋",
+    "emoji": "\uD83C\uDFE0",
     "words": [
       {
         "word": "room",
@@ -404,6 +415,7 @@
   },
   "lesson011": {
     "description": "学校",
+    "emoji": "\uD83C\uDFEB",
     "words": [
       {
         "word": "school",
@@ -441,6 +453,7 @@
   },
   "lesson012": {
     "description": "天気",
+    "emoji": "\u2600\uFE0F",
     "words": [
       {
         "word": "sunny",
@@ -478,6 +491,7 @@
   },
   "lesson013": {
     "description": "スポーツ",
+    "emoji": "\u26BD",
     "words": [
       {
         "word": "soccer",
@@ -515,6 +529,7 @@
   },
   "lesson014": {
     "description": "職業",
+    "emoji": "\uD83D\uDC68\u200D\uD83C\uDF73",
     "words": [
       {
         "word": "doctor",
@@ -552,6 +567,7 @@
   },
   "lesson015": {
     "description": "数字",
+    "emoji": "\uD83D\uDD22",
     "words": [
       {
         "word": "one",
@@ -597,6 +613,7 @@
   },
   "lesson016": {
     "description": "あいさつ",
+    "emoji": "\uD83D\uDC4B",
     "words": [
       {
         "word": "hello",
@@ -634,6 +651,7 @@
   },
   "lesson017": {
     "description": "自然",
+    "emoji": "\uD83C\uDF33",
     "words": [
       {
         "word": "mountain",
@@ -675,6 +693,7 @@
   },
   "lesson018": {
     "description": "昆虫",
+    "emoji": "\uD83E\uDD8B",
     "words": [
       {
         "word": "butterfly",
@@ -712,6 +731,7 @@
   },
   "lesson019": {
     "description": "国と都市",
+    "emoji": "\uD83C\uDF0D",
     "words": [
       {
         "word": "Japan",

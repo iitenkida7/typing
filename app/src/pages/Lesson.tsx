@@ -6,7 +6,7 @@ import Word from '../components/Word'
 import Images from '../components/Images'
 import Char from '../components/Char'
 import Keyboard from '../components/Keyboard'
-import Debug from '../components/Debug'
+import { addScore, getScores, getBestScore, type ScoreEntry } from '../lib/scores'
 
 interface LessonWord {
   word: string
@@ -47,8 +47,6 @@ export default function Lesson() {
   const [remains, setRemains] = useState('')
   const [targetChr, setTargetChr] = useState('')
   const [missCnt, setMissCnt] = useState(0)
-  const [pressKey, setPressKey] = useState('')
-  const [keyCode, setKeyCode] = useState(0)
   const [imageData, setImageData] = useState<LessonWord[]>([])
   const [combo, setCombo] = useState(0)
   const [maxCombo, setMaxCombo] = useState(0)
@@ -98,8 +96,6 @@ export default function Lesson() {
     setRemains('')
     setTargetChr('')
     setMissCnt(0)
-    setPressKey('')
-    setKeyCode(0)
     setCombo(0)
     setMaxCombo(0)
     setTotalKeys(0)
@@ -225,8 +221,6 @@ export default function Lesson() {
     setIsStarted(true)
     setIsCompleted(false)
     setMissCnt(0)
-    setPressKey('')
-    setKeyCode(0)
     setCombo(0)
     setMaxCombo(0)
     setTotalKeys(0)
@@ -246,8 +240,39 @@ export default function Lesson() {
     startCountdown()
   }
 
+  const nextLessonIdRef = useRef(nextLessonId)
+  nextLessonIdRef.current = nextLessonId
+
+  const navigateRef = useRef(navigate)
+  navigateRef.current = navigate
+
+  const startCountdownRef = useRef(startCountdown)
+  startCountdownRef.current = startCountdown
+
+  const retryRef = useRef(retry)
+  retryRef.current = retry
+
   const keyPress = useCallback((event: KeyboardEvent) => {
-    if (!isStartedRef.current || isCompletedRef.current) return
+    // Start screen: Space or Enter to start
+    if (!isStartedRef.current && !isCompletedRef.current) {
+      if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault()
+        startCountdownRef.current()
+      }
+      return
+    }
+
+    // Completed screen: R to retry, Enter/Space for next lesson
+    if (isCompletedRef.current) {
+      if (event.key === 'r' || event.key === 'R') {
+        event.preventDefault()
+        retryRef.current()
+      } else if ((event.key === ' ' || event.key === 'Enter') && nextLessonIdRef.current) {
+        event.preventDefault()
+        navigateRef.current(`/lesson/${nextLessonIdRef.current}`)
+      }
+      return
+    }
 
     const currentChr = targetChrRef.current
     const currentRemains = remainsRef.current
@@ -296,6 +321,19 @@ export default function Lesson() {
           isCompletedRef.current = true
           setIsCompleted(true)
           celebrateCompletion()
+
+          // Save score
+          if (id) {
+            const acc = totalKeysRef.current > 0
+              ? Math.round((correctKeysRef.current / totalKeysRef.current) * 100)
+              : 100
+            addScore(id, {
+              accuracy: acc,
+              maxCombo: maxComboRef.current,
+              misses: totalKeysRef.current - correctKeysRef.current,
+              totalWords: completedWordsRef.current,
+            })
+          }
         }
       }
     } else {
@@ -308,8 +346,6 @@ export default function Lesson() {
       playBeep()
     }
 
-    setPressKey(event.key)
-    setKeyCode(event.keyCode)
   }, [])
 
   useEffect(() => {
@@ -364,32 +400,19 @@ export default function Lesson() {
             )}
           </div>
 
-          {/* 2-column layout: left=images, right=typing */}
-          <div className="flex gap-4 items-start">
-            {/* Left: images + word info */}
-            <div className="w-64 shrink-0">
-              <div className={wordCleared ? 'animate-[wordClear_0.6s_ease-out]' : ''}>
-                <Word ja={target.ja} word={target.word} />
-              </div>
-              <div className="mt-2">
-                <Images imageData={imageData} word={target.word} />
-              </div>
-              <div className="text-center mt-3">
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 text-sm rounded-lg shadow-md hover:shadow-lg transition-all"
-                  onClick={() => speech(target.word)}
-                >
-                  もういちど きく
-                </button>
-              </div>
-            </div>
+          {/* Typing area with corner images */}
+          <div className="relative">
+            {/* Images in corners, behind content */}
+            <Images imageData={imageData} word={target.word} />
 
-            {/* Right: char display + keyboard */}
-            <div className="flex-1 min-w-0">
-              <div className="text-center">
-                <canvas ref={canvasRef} />
-              </div>
+            <div className={`relative z-10 ${wordCleared ? 'animate-[wordClear_0.6s_ease-out]' : ''}`}>
+              <Word ja={target.ja} word={target.word} onSpeak={() => speech(target.word)} />
+            </div>
+            <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none z-50" />
+            <div className="relative z-10">
               <Char word={target.word} remains={remains} />
+            </div>
+            <div className="relative z-10">
               <Keyboard
                 targetChr={targetChr.toUpperCase()}
                 lastPressedKey={lastPressedKey}
@@ -416,17 +439,29 @@ export default function Lesson() {
           >
             スタート！
           </button>
+          <p className="mt-4 text-gray-400 text-sm">Space または Enter でスタート</p>
         </div>
       )}
 
       {isCompleted && (
         <div className="text-center mt-8">
-          <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-50" />
-          <div className="animate-[fadeInUp_0.5s_ease-out]">
-            <p className="text-5xl font-bold mb-4 bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-              クリア！
-            </p>
-            <p className="text-6xl mb-6">&#x1F389;</p>
+          <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none z-0" />
+          <div className="relative z-10 animate-[fadeInUp_0.5s_ease-out]">
+            {accuracy === 100 ? (
+              <>
+                <p className="text-5xl font-bold mb-4 bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                  クリア！
+                </p>
+                <p className="text-6xl mb-6">&#x1F389;</p>
+              </>
+            ) : (
+              <>
+                <p className="text-3xl font-bold mb-4 text-orange-500">
+                  あと少し！パーフェクトをめざそう！
+                </p>
+                <p className="text-6xl mb-6">&#x1F4AA;</p>
+              </>
+            )}
 
             {/* Score card */}
             <div className="inline-block bg-white rounded-2xl shadow-xl p-6 mb-8 text-left">
@@ -470,19 +505,58 @@ export default function Lesson() {
               )}
             </div>
 
+            {/* History */}
+            {id && (() => {
+              const history = getScores(id)
+              const best = getBestScore(id)
+              if (history.length === 0) return null
+              return (
+                <div className="inline-block bg-white rounded-2xl shadow-xl p-6 mb-8 text-left w-full max-w-md">
+                  {best && (
+                    <div className="mb-4 p-3 bg-yellow-50 rounded-xl text-center">
+                      <p className="text-sm text-gray-500">ベストスコア</p>
+                      <p className="text-2xl font-bold text-yellow-500">{best.accuracy}%</p>
+                      <p className="text-xs text-gray-400">コンボ {best.maxCombo}</p>
+                    </div>
+                  )}
+                  <p className="text-sm font-bold text-gray-600 mb-2">りれき（あたらしいじゅん）</p>
+                  <div className="max-h-32 overflow-y-auto space-y-1">
+                    {[...history].reverse().slice(0, 10).map((s, i) => (
+                      <div key={i} className="flex justify-between text-sm px-2 py-1 rounded bg-gray-50">
+                        <span className="text-gray-500">{new Date(s.date).toLocaleDateString('ja-JP')}</span>
+                        <span className="font-bold text-blue-500">{s.accuracy}%</span>
+                        <span className="text-gray-400">コンボ {s.maxCombo}</span>
+                        <span className="text-red-400">ミス {s.misses}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            })()}
+
             <div className="flex justify-center gap-4">
               <button
-                className="bg-linear-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white text-xl px-10 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                className={`text-xl px-10 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 ${
+                  accuracy === 100
+                    ? 'bg-linear-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white'
+                    : 'bg-linear-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white animate-pulse'
+                }`}
                 onClick={retry}
               >
                 もういちど
+                <span className="block text-xs opacity-70 mt-1">R キー</span>
               </button>
               {nextLessonId && (
                 <button
-                  className="bg-linear-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white text-xl px-10 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className={`text-xl px-10 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 ${
+                    accuracy === 100
+                      ? 'bg-linear-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white'
+                      : 'bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-500'
+                  }`}
                   onClick={() => navigate(`/lesson/${nextLessonId}`)}
                 >
                   つぎのレッスン
+                  <span className="block text-xs opacity-70 mt-1">Space / Enter</span>
                 </button>
               )}
             </div>
@@ -490,7 +564,6 @@ export default function Lesson() {
         </div>
       )}
 
-      <Debug pressKey={pressKey} keyCode={keyCode} missCnt={missCnt} />
     </div>
   )
 }
