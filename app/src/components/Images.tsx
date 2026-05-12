@@ -24,7 +24,7 @@ export default function Images({ word, imageData }: { word: string; imageData: L
     const params = new URLSearchParams({
       method: 'flickr.photos.search',
       api_key: '2da67eccedeb0b110a63374c5c53cc41',
-      per_page: '10',
+      per_page: '4',
       extras: 'url_s',
       sort: 'relevance',
       media: 'photos',
@@ -42,10 +42,10 @@ export default function Images({ word, imageData }: { word: string; imageData: L
   }
 
   return (
-    <div className="flex flex-wrap gap-2 mt-6">
+    <div className="grid grid-cols-4 gap-3 mt-6">
       {(photos[word] ?? []).map((photo, i) => (
-        <div key={i} className="flex-1 min-w-16">
-          <img src={photo.url_s} alt={word} className="w-full rounded" />
+        <div key={i} className="aspect-square overflow-hidden rounded-lg">
+          <img src={photo.url_s} alt={word} className="w-full h-full object-cover" />
         </div>
       ))}
     </div>

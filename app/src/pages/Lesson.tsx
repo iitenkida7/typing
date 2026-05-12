@@ -36,6 +36,16 @@ export default function Lesson() {
   const isStartedRef = useRef(false)
   const isCompletedRef = useRef(false)
 
+  // Preload voices (async in most browsers)
+  useEffect(() => {
+    const load = () => window.speechSynthesis.getVoices()
+    load()
+    window.speechSynthesis.onvoiceschanged = load
+    return () => {
+      window.speechSynthesis.onvoiceschanged = null
+    }
+  }, [])
+
   // Reset when lesson id changes
   useEffect(() => {
     if (!id) return
@@ -58,13 +68,20 @@ export default function Lesson() {
     isCompletedRef.current = false
     remainsRef.current = ''
     targetChrRef.current = ''
-
-    window.speechSynthesis.getVoices() // dummy call for initialization
   }, [id])
 
   const speech = (text: string) => {
+    const voices = window.speechSynthesis.getVoices()
+    const enVoices = voices.filter((v) => v.lang.startsWith('en'))
+    const voice =
+      enVoices.find((v) => v.name === 'Victoria') ??
+      enVoices.find((v) => v.name === 'Samantha') ??
+      enVoices.find((v) => v.lang === 'en-US') ??
+      enVoices[0] ??
+      null
     const utter = new SpeechSynthesisUtterance()
-    utter.voice = window.speechSynthesis.getVoices()[41]
+    utter.lang = 'en-US'
+    if (voice) utter.voice = voice
     utter.rate = 0.75
     utter.text = text
     window.speechSynthesis.speak(utter)
