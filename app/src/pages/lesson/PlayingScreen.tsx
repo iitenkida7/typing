@@ -6,7 +6,7 @@ import type { LessonState } from '../../hooks/useLessonReducer'
 
 interface PlayingScreenProps {
   state: LessonState
-  canvasRef: React.RefObject<HTMLCanvasElement>
+  canvasRef: React.RefObject<HTMLCanvasElement | null>
   onSpeak: () => void
 }
 

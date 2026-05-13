@@ -1,14 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import ResultScreen from './ResultScreen'
-import * as scoresLib from '../../lib/scores'
 import type { LessonState } from '../../hooks/useLessonReducer'
-
-// Mock the scores library
-vi.mock('../../lib/scores', () => ({
-  getScores: vi.fn(),
-  getBestScore: vi.fn(),
-}))
 
 const mockState: LessonState = {
   phase: 'completed',
@@ -30,11 +23,15 @@ const mockState: LessonState = {
   shakeKey: false,
 }
 
+function setScores(lessonId: string, scores: any[]) {
+  const data = JSON.parse(localStorage.getItem('typing-scores') || '{}')
+  data[lessonId] = { scores }
+  localStorage.setItem('typing-scores', JSON.stringify(data))
+}
+
 describe('ResultScreen', () => {
   beforeEach(() => {
-    vi.clearAllMocks()
-    ;(scoresLib.getScores as any).mockReturnValue([])
-    ;(scoresLib.getBestScore as any).mockReturnValue(null)
+    localStorage.clear()
   })
 
   it('renders accuracy, maxCombo, totalWords, and misses from state', () => {
@@ -94,8 +91,7 @@ describe('ResultScreen', () => {
       },
     ]
 
-    ;(scoresLib.getScores as any).mockReturnValue(mockHistory)
-    ;(scoresLib.getBestScore as any).mockReturnValue(mockHistory[0])
+    setScores('lesson1', mockHistory)
 
     const canvasRef = { current: document.createElement('canvas') }
 

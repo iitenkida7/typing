@@ -5,7 +5,7 @@ interface ResultScreenProps {
   state: LessonState
   lessonId: string
   nextLessonId: string | null
-  canvasRef: React.RefObject<HTMLCanvasElement>
+  canvasRef: React.RefObject<HTMLCanvasElement | null>
   onRetry: () => void
   onNext: () => void
 }

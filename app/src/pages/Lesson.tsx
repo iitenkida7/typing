@@ -32,9 +32,9 @@ export default function Lesson() {
 
       <CountdownOverlay value={state.countdown} />
 
-      {state.phase === 'idle' && <StartScreen lessonObj={lessonObj} onStart={startCountdown} />}
+      {state.phase === 'idle' && <StartScreen lessonObj={lessonObj ?? undefined} onStart={startCountdown} />}
 
-      {state.phase === 'countdown' && <StartScreen lessonObj={lessonObj} onStart={startCountdown} />}
+      {state.phase === 'countdown' && <StartScreen lessonObj={lessonObj ?? undefined} onStart={startCountdown} />}
 
       {state.phase === 'playing' && (
         <PlayingScreen state={state} canvasRef={canvasRef} onSpeak={() => {}} />
