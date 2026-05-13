@@ -233,7 +233,7 @@ export function lessonReducer(state: LessonState, action: LessonAction): LessonS
 
 interface UseLessonReducerReturn {
   state: LessonState
-  canvasRef: React.RefObject<HTMLCanvasElement>
+  canvasRef: React.RefObject<HTMLCanvasElement | null>
   startCountdown: () => void
   retry: () => void
 }
@@ -434,7 +434,7 @@ export function useLessonReducer(lessonId?: string): UseLessonReducerReturn {
     }
 
     const timer = setTimeout(() => {
-      dispatch({ type: 'COUNTDOWN_TICK', value: state.countdown - 1 })
+      dispatch({ type: 'COUNTDOWN_TICK', value: state.countdown! - 1 })
     }, 600)
     return () => clearTimeout(timer)
   }, [state.countdown, state.phase])
