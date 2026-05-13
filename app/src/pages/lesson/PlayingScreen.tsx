@@ -32,14 +32,14 @@ export default function PlayingScreen({ state, canvasRef, onSpeak }: PlayingScre
   return (
     <div>
       {/* Progress bar */}
-      <div className="mb-3">
-        <div className="flex justify-between text-sm text-gray-500 mb-1">
+      <div className="mb-3 lg:mb-4">
+        <div className="flex justify-between text-sm lg:text-base text-gray-500 mb-1">
           <span>
             {state.completedWords} / {state.totalWords} ワード
           </span>
           <span>せいかくさ {accuracy}%</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+        <div className="w-full bg-gray-200 rounded-full h-3 lg:h-4 overflow-hidden">
           <div
             className="h-full bg-linear-to-r from-green-400 to-emerald-500 rounded-full transition-all duration-500 ease-out"
             style={{
@@ -50,9 +50,9 @@ export default function PlayingScreen({ state, canvasRef, onSpeak }: PlayingScre
       </div>
 
       {/* Combo display */}
-      <div className="h-8 text-center">
+      <div className="h-6 sm:h-8 lg:h-10 text-center">
         {comboInfo && (
-          <span className={`text-xl font-bold ${comboInfo.color} animate-bounce inline-block`}>
+          <span className={`text-base sm:text-xl lg:text-2xl xl:text-3xl font-bold ${comboInfo.color} animate-bounce inline-block`}>
             {comboInfo.message}
           </span>
         )}

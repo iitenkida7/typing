@@ -9,10 +9,10 @@ export default function Word({
 }) {
   return (
     <div className="text-center">
-      <p className="text-2xl font-semibold text-gray-800">
+      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-800">
         {ja}
       </p>
-      <p className="text-lg text-gray-500 inline-flex items-center gap-2">
+      <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-500 inline-flex items-center gap-2">
         {word}
         {onSpeak && (
           <button

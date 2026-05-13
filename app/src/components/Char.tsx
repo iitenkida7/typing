@@ -8,8 +8,8 @@ export default function Char({
   const typedLength = word.length - remains.length
 
   return (
-    <div className="text-center mt-3">
-      <p className="text-6xl font-mono tracking-widest">
+    <div className="text-center mt-2 sm:mt-3 lg:mt-4">
+      <p className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-mono tracking-widest">
         {word.split('').map((char, i) => {
           const display = char === ' ' ? '\u2423' : char
           if (i < typedLength) {
