@@ -5,3 +5,6 @@ compatibility_date = "2024-01-01"
 [assets]
 directory = "./dist"
 binding = "ASSETS"
+
+# Local development: create app/.dev.vars with FLICKR_API_KEY=your_key
+# Production: wrangler secret put FLICKR_API_KEY
