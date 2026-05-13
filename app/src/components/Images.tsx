@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 interface LessonWord {
   word: string
@@ -28,21 +27,10 @@ export default function Images({ word, imageData }: { word: string; imageData: L
   }, [])
 
   const getImage = async (text: string) => {
-    const params = new URLSearchParams({
-      method: 'flickr.photos.search',
-      api_key: '2da67eccedeb0b110a63374c5c53cc41',
-      per_page: '4',
-      extras: 'url_s',
-      sort: 'relevance',
-      media: 'photos',
-      safe_search: '1',
-      format: 'json',
-      nojsoncallback: '1',
-      text,
-    })
     try {
-      const response = await axios.get(`https://api.flickr.com/services/rest/?${params}`)
-      const fetched: FlickrPhoto[] = response.data.photos.photo
+      const response = await fetch(`/api/images?text=${encodeURIComponent(text)}`)
+      if (!response.ok) return
+      const fetched: FlickrPhoto[] = await response.json()
       fetched.forEach((photo) => {
         if (photo.url_s) {
           const img = new Image()
