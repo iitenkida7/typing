@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Lesson from './pages/Lesson'
 import History from './pages/History'
+import About from './pages/About'
 
 function NotFound() {
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/lesson/:id" element={<Lesson />} />
         <Route path="/history" element={<History />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
